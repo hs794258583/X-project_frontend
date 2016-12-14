@@ -11,7 +11,6 @@ Color:
     font-family: 'Roboto Slab', serif;
 }
 html, body {
-    height: 100%;
     margin: 0px;
     background-color: #f5f5f5;
     color: #757575;
@@ -305,7 +304,114 @@ footer {
     display: block;
     float:left;
     padding: 5px 10px;
+    border: 2px solid #f44336;
+    margin: 5px 5px;
+}
+.list-category a:hover,.list-category a:active {
     background-color: #f44336;
     color: #fff;
-    margin: 5px 5px;
+}
+
+
+/*Book info*/
+.book-info {
+    line-height: 2;
+}
+.book-info img {
+    display: block;
+    width: 200px;
+    margin: auto;
+}
+.book-info h1 {
+    text-align: center;
+}
+.book-info .download-ebook {
+    text-align: center;
+}
+
+.book-info .download-ebook a {
+    padding: 5px;
+    border: 2px solid #f44336;
+}
+.book-info .download-ebook a:hover,.book-info .download-ebook a:active {
+    background-color: #f44336;
+    color: #fff;
+}
+.list-chap ul {
+    height: 70vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.list-chap ul {
+    list-style-type: none;
+    margin: 10px 5px;
+    padding: 0px;
+}
+.list-chap li {
+    border-bottom: 1px solid #757575;
+    height: 40px;
+    margin: 15px;
+    padding: 0px;
+}
+.list-chap li:hover {
+    border-bottom: 2px solid #f44336;
+    margin: 13px;
+    padding: 0px;
+}
+.search-chap {
+    margin-bottom: 0px;
+}
+
+@media only screen and (min-width: 920px) {
+    .book-info {
+        width: 50%;
+        float: left;
+    }
+    .list-chap {
+        width: 50%;
+        float: right
+    }
+}
+/* chap*/
+.chap h1, .chap h2 {
+    text-align: center;
+    margin: 0px;
+}
+.chap h1 {
+    margin-top: 40px;
+}
+.chap .chap-content {
+    border-bottom: 1px solid #f44336;
+    line-height: 2;
+}
+@media only screen and (min-width: 1200px) {
+    .chap {
+        width: 1200px;
+        margin: auto;
+    }
+}
+
+/*review content*/
+.review-content .review-thumb img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+.review-content .title {
+    text-align: center;
+}
+.review-content .info {
+    display: block;
+    text-align: center;
+}
+@media only screen and (min-width: 1000px) {
+    .review-content {
+        width: 1000px;
+        margin: auto;
+    }
+    .review-content .review-thumb img {
+    display: block;
+    margin: auto;
+    width: 70%;
+}
 }
