@@ -1,3 +1,6 @@
+<!--
+  Author: Linh Ho
+-->
 <header>
         <nav>
            <div class="tab">
@@ -13,9 +16,13 @@
                     <i class="large material-icons">equalizer</i>
                     <span>BẢNG XẾP HẠNG</span>
                 </a>
-                <a class="tab-author" href="category.html">
+                <a *ngIf="!categoryShow" class="tab-author" href="#" (click)="openMenu()">
                     <i class="material-icons">view_list</i>
                     <span>THỂ LOẠI</span>
+                </a>
+                <a *ngIf="categoryShow" class="tab-author hide-menu" href="#" (click)="openMenu()">
+                    <i class="material-icons">clear_all</i>
+                    <span>ẨN MENU</span>
                 </a>
                 <a id="showSidebar" class="tab-menu" href="#" (click)="_auth.login()" *ngIf="!_auth.authenticated()">
                     <i class="material-icons">person_outline</i>
@@ -29,7 +36,7 @@
         </nav>
     </header>
 
-    <div class="wrapper">
+    <div id="web-content" class="wrapper">
 
       <router-outlet></router-outlet>
 
@@ -37,4 +44,11 @@
     <footer>
         <div>@2016 | Linh Ho</div>
     </footer>
+
+    <!--categories-->
+    <div id="category-form">
+      <div class="list-category">
+            <a *ngFor="let category of categoryList" href="#!">{{category.categoryName}}</a>
+        </div>
+    </div>
 

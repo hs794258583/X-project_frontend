@@ -1,13 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor(private _auth: AuthService) {
+export class AppComponent implements OnInit {
+  categoryShow:boolean = false;
+  categoryList:any[];
+  errorMessage:string; 
+  constructor(
+    private _auth: AuthService,
+    private _api: ApiService
+  ) {
     
+  }
+
+  ngOnInit() {
+    this.getCategoryList()
+  }
+  getCategoryList(){
+     // Author: Linh Ho
+      this._api.getApi("http://localhost:4200/assets/smock/api/categoryList.json")
+                .subscribe(data => this.categoryList = data,
+                           error => this.errorMessage = <any>error);
+    }
+
+  openMenu() {
+      // Author: Linh Ho
+      this.categoryShow = !this.categoryShow;
+      if(this.categoryShow) {
+        document.getElementById("category-form").style.height = "40vh";
+        document.getElementById("web-content").style.marginTop = "40vh";
+      }
+      else {
+        document.getElementById("category-form").style.height = "0%";
+        document.getElementById("web-content").style.marginTop = "90px";
+      }
   }
 }

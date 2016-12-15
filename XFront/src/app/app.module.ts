@@ -10,6 +10,7 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AUTH_PROVIDERS } from 'angular2-jwt'
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AuthGuard } from './auth.guard';
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

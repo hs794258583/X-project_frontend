@@ -1,0 +1,58 @@
+[
+    {
+        "categoryName": "Tiên hiệp",
+        "categorySlug": "tien-hiep"
+    },
+    {
+        "categoryName": "Kiếm hiệp",
+        "categorySlug": "kiem-hiep"
+    },
+    {
+        "categoryName": "Quan Trường",
+        "categorySlug": "quan-truong"
+    },
+    {
+        "categoryName": "Khoa Huyễn",
+        "categorySlug": "khoa-huyen"
+    },
+    {
+        "categoryName": "Dị Giới",
+        "categorySlug": "di-gioi"
+    },
+    {
+        "categoryName": "Quân Sự",
+        "categorySlug": "quan-su"
+    },
+    {
+        "categoryName": "Xuyên Không",
+        "categorySlug": "xuyen-khong"
+    },
+    {
+        "categoryName": "Trinh Thám",
+        "categorySlug": "trinh-tham"
+    },
+    {
+        "categoryName": "Đô Thị",
+        "categorySlug": "do-thi"
+    },
+    {
+        "categoryName": "Huyền Huyễn",
+        "categorySlug": "huyen-huyen"
+    },
+    {
+        "categoryName": "Thám Hiểm",
+        "categorySlug": "tham-hiem"
+    },
+    {
+        "categoryName": "Hài Hước",
+        "categorySlug": "hai-huoc"
+    },
+    {
+        "categoryName": "Cổ Đại",
+        "categorySlug": "co-dai"
+    },
+    {
+        "categoryName": "Truyện Teen",
+        "categorySlug": "truyen-teen"
+    }
+]
