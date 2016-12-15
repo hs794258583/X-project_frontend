@@ -2,7 +2,7 @@
 <h5>Nickname: {{profile.nickname}}</h5>
 <div class="row">
   <div class="col-md-2">
-      <img class="thumbnail" style="width: 100%" src="{{profile.picture}}" alt="your_profile_picture">
+      <img class="thumbnail" style="width: 20%" src="{{profile.picture}}" alt="your_profile_picture">
   </div>
   <div class="col-md-10">
        <ul class="list-group">
@@ -10,5 +10,6 @@
     <li class="list-group-item"><strong>Profile Last Updated: </strong>{{profile.updated_at}}</li>
   </ul>
   </div>
+  <a href="#" (click)="_auth.logout()" *ngIf="_auth.authenticated()">Logout</a>
  
 </div>
