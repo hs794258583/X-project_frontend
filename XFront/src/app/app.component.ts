@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { ApiService } from './services/api.service';
+import { Genre } from './model/genre.model';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
   categoryShow:boolean = false;
-  categoryList:any[];
+  categoryList:Genre[];
   errorMessage:string; 
   constructor(
     private _auth: AuthService,

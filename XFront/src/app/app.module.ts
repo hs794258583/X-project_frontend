@@ -13,13 +13,17 @@ import { AuthGuard } from './auth.guard';
 import { ApiService } from './services/api.service';
 import { ReviewComponent } from './components/review/review.component';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { RankingComponent } from './components/ranking/ranking.component';
+import { GenreComponent } from './components/genre/genre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    ReviewComponent
+    ReviewComponent,
+    RankingComponent,
+    GenreComponent
   ],
   imports: [
     BrowserModule,

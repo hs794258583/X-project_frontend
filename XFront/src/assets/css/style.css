@@ -82,8 +82,10 @@ nav .tab-author {
     margin-top: 8px;
 }
 nav .tab-menu {
+    color: #fff;
+    text-align: center;
     width: 20%;
-    float: right;
+    float: left;
     margin-top: 8px;
 }
 
@@ -462,5 +464,5 @@ footer {
 }
 .category-active {
     background-color: #f44336;
-    color: #fff;
+    color: #fff !important;
 }

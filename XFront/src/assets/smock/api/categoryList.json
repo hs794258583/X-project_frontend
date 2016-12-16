@@ -1,58 +1,72 @@
 [
     {
-        "categoryName": "Tiên hiệp",
-        "categorySlug": "tien-hiep"
+        "GenreId": 1,
+        "GenreName": "Tiên hiệp",
+        "GenreSlug": "tien-hiep"
     },
     {
-        "categoryName": "Kiếm hiệp",
-        "categorySlug": "kiem-hiep"
+        "GenreId": 2,
+        "GenreName": "Kiếm hiệp",
+        "GenreSlug": "kiem-hiep"
     },
     {
-        "categoryName": "Quan Trường",
-        "categorySlug": "quan-truong"
+        "GenreId": 3,
+        "GenreName": "Quan Trường",
+        "GenreSlug": "quan-truong"
     },
     {
-        "categoryName": "Khoa Huyễn",
-        "categorySlug": "khoa-huyen"
+        "GenreId": 4,
+        "GenreName": "Khoa Huyễn",
+        "GenreSlug": "khoa-huyen"
     },
     {
-        "categoryName": "Dị Giới",
-        "categorySlug": "di-gioi"
+        "GenreId": 5,
+        "GenreName": "Dị Giới",
+        "GenreSlug": "di-gioi"
     },
     {
-        "categoryName": "Quân Sự",
-        "categorySlug": "quan-su"
+        "GenreId": 6,
+        "GenreName": "Quân Sự",
+        "GenreSlug": "quan-su"
     },
     {
-        "categoryName": "Xuyên Không",
-        "categorySlug": "xuyen-khong"
+        "GenreId": 7,
+        "GenreName": "Xuyên Không",
+        "GenreSlug": "xuyen-khong"
     },
     {
-        "categoryName": "Trinh Thám",
-        "categorySlug": "trinh-tham"
+        "GenreId": 8,
+        "GenreName": "Trinh Thám",
+        "GenreSlug": "trinh-tham"
     },
     {
-        "categoryName": "Đô Thị",
-        "categorySlug": "do-thi"
+        "GenreId": 9,
+        "GenreName": "Đô Thị",
+        "GenreSlug": "do-thi"
     },
     {
-        "categoryName": "Huyền Huyễn",
-        "categorySlug": "huyen-huyen"
+        "GenreId": 10,
+        "GenreName": "Huyền Huyễn",
+        "GenreSlug": "huyen-huyen"
     },
     {
-        "categoryName": "Thám Hiểm",
-        "categorySlug": "tham-hiem"
+        "GenreId": 11,
+        "GenreName": "Thám Hiểm",
+        "GenreSlug": "tham-hiem"
     },
     {
-        "categoryName": "Hài Hước",
-        "categorySlug": "hai-huoc"
+        "GenreId": 12,
+        "GenreName": "Hài Hước",
+        "GenreSlug": "hai-huoc"
     },
     {
-        "categoryName": "Cổ Đại",
-        "categorySlug": "co-dai"
+        "GenreId": 13,
+        "GenreName": "Cổ Đại",
+        "GenreSlug": "co-dai"
     },
     {
-        "categoryName": "Truyện Teen",
-        "categorySlug": "truyen-teen"
+        "GenreId": 14,
+        "GenreName": "Truyện Teen",
+        "GenreSlug": "truyen-teen"
     }
 ]
