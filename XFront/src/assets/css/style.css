@@ -452,6 +452,15 @@ footer {
     background-color: #f44336;
     color: #fff;
 }
-.hide-menu i, .hide-menu span {
+.hide-menu * {
     color: #ffea00;
+}
+
+/* Active */
+.menu-active * {
+    color: #ff0;
+}
+.category-active {
+    background-color: #f44336;
+    color: #fff;
 }

@@ -11,12 +11,14 @@ import { AUTH_PROVIDERS } from 'angular2-jwt'
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { ApiService } from './services/api.service';
+import { ReviewComponent } from './components/review/review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
