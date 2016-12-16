@@ -8,38 +8,12 @@
     <a href="#!"><i class="material-icons">search</i></a>
 </div>
 
-<div class="card">
-    <div class="card-thumb">
-        <a href="book-info.html"><img class="thumb" src="assets/smock/images/Nha_gia_kim.jpg" alt="nhà giả kim"></a>
-    </div>
-    
-    <h1><a href="">Nhà giả kim</a></h1>
-    <h2>15/12/2016 | 10/10</h2>
-</div>
-<div class="card">
-    <div class="card-thumb">
-        <a href="book-info.html"><img class="thumb" src="assets/smock/images/smock/totto-chan.jpg" alt="Tot-to-chan"></a>
-    </div>
-    
-    <h1><a href="">Totto-chan</a></h1>
-    <h2>15/12/2016 | 10/10</h2>
-    
-</div>
-<div class="card">
-    <div class="card-thumb">
-        <a href="book-info.html"><img class="thumb" src="assets/smock/images/smock/giet_con_chim_nhai.jpg" alt="Giết con chim nhại"></a>
-    </div>
-    
-    <h1><a href="">Giết con chim nhại</a></h1>
-    <h2>15/12/2016 | 10/10</h2>
-    
-</div>
-<div class="card">
-    <div class="card-thumb">
-        <a href="book-info.html"><img class="thumb" src="assets/smock/images/smock/giet_con_chim_nhai.jpg" alt="Giết con chim nhại"></a>
-    </div>
-    
-    <h1><a href="">Giết con chim nhại</a></h1>
-    <h2>15/12/2016 | 10/10</h2>
-    
-</div>
+<template ngFor let-story="$implicit" [ngForOf]="stories" let-i="index">
+    <div class="card" *ngIf="i<10">
+        <div class="card-thumb">
+        <a href="#"><img class="thumb" src="assets/smock/images/{{story.ImageUrl}}" alt=""></a>
+        </div>
+        <h1><a href="">Nhà giả kim</a></h1>
+        <h2>15/12/2016 | 10/10</h2>
+    </div>      
+</template>

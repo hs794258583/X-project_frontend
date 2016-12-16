@@ -6,18 +6,18 @@ import { DebugElement } from '@angular/core';
 import { RankingComponent } from './ranking.component';
 
 describe('HomeComponent', () => {
-  let component: GenreComponent;
-  let fixture: ComponentFixture<GenreComponent>;
+  let component: RankingComponent;
+  let fixture: ComponentFixture<RankingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenreComponent ]
+      declarations: [ RankingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenreComponent);
+    fixture = TestBed.createComponent(RankingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

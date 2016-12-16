@@ -41,14 +41,13 @@
       <router-outlet></router-outlet>
 
     </div><!-- /.container -->
-    <footer>
-        <div>@2016 | Linh Ho</div>
-    </footer>
-
     <!--categories-->
     <div id="category-form">
       <div class="list-category">
             <a *ngFor="let category of categoryList" routerLink="/chuyen-muc/{{category.GenreSlug}}"  routerLinkActive="category-active" (click)="openMenu()">{{category.GenreName}}</a>
         </div>
     </div>
+    <footer>
+        <div>@2016 | Linh Ho</div>
+    </footer>
 
