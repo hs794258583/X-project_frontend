@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
                 .subscribe(data => this.categoryList = data,
                            error => this.errorMessage = <any>error);
     }
-
+    
   openMenu() {
       // Author: Linh Ho
       this.categoryShow = !this.categoryShow;

@@ -12,6 +12,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { ApiService } from './services/api.service';
 import { ReviewComponent } from './components/review/review.component';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReviewComponent } from './components/review/review.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    InfiniteScrollModule
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService],
   bootstrap: [AppComponent]

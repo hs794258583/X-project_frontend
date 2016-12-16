@@ -5,6 +5,8 @@ export interface Review {
     "CreatedDate": string,
     "LastEditedDate": string,
     "UserId": string,
-    "Rating": number,
+    "Score": number,
+    "RateCount": number,
+    "ImageUrl": string,
     "Slug": string
 }
