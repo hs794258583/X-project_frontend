@@ -15,6 +15,8 @@ import { ReviewComponent } from './components/review/review.component';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { GenreComponent } from './components/genre/genre.component';
+import { BookInfoComponent } from './components/book/bookInfo.component';
+import { ChapComponent } from './components/book/chap.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { GenreComponent } from './components/genre/genre.component';
     ProfileComponent,
     ReviewComponent,
     RankingComponent,
-    GenreComponent
+    GenreComponent,
+    BookInfoComponent,
+    ChapComponent
   ],
   imports: [
     BrowserModule,

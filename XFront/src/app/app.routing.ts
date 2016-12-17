@@ -6,6 +6,8 @@ import { ReviewComponent } from './components/review/review.component';
 import { AuthGuard } from './auth.guard';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { GenreComponent } from './components/genre/genre.component';
+import { BookInfoComponent } from './components/book/bookInfo.component';
+import { ChapComponent } from './components/book/chap.component';
 
 const appRoutes: Routes = [
     {
@@ -23,6 +25,14 @@ const appRoutes: Routes = [
     {
         path: 'chuyen-muc/:slug',
         component: GenreComponent 
+    },
+    {
+        path: 'sach/:slug',
+        component: BookInfoComponent 
+    },
+    {
+        path: 'sach/:slug/:chap',
+        component: ChapComponent 
     },
     {
         path: 'profile',

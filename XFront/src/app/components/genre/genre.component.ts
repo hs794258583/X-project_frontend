@@ -4,7 +4,7 @@ import { ApiService } from '../../services/api.service';
 AuthService
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-genre',
   templateUrl: './genre.component.html'
 })
 export class GenreComponent implements OnInit {

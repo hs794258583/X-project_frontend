@@ -1,0 +1,18 @@
+<div class="book-info" *ngFor="let book of bookInfo">
+    <img src="assets/smock/images/Nha_gia_kim.jpg" alt="Nhà giả kim">
+    <h1>{{book.StoryName}}</h1>
+    <div class="download-ebook">
+        <a href="#!">Download Ebook</a>
+        <a href="#!">Download PDF</a>
+    </div>
+    <div [innerHTML]="book.StoryDescription"></div>
+</div>
+<div class="list-chap">
+    <div class="search-form search-chap">
+        <input type="text" placeholder="Tìm kiếm chap...">
+        <a href="#!"><i class="material-icons">search</i></a>
+    </div>
+    <ul>
+        <li *ngFor="let chap of listChap">Chap {{chap.ChapterNumber}} - <a routerLink="{{chap.ChapterNumber}}">{{chap.ChapterTitle}}</a></li>
+    </ul>
+</div>

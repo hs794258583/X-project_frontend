@@ -374,6 +374,10 @@ footer {
     .book-info {
         width: 50%;
         float: left;
+        height: 70vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 65px;
     }
     .list-chap {
         width: 50%;
