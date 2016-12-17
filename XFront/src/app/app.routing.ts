@@ -8,6 +8,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
 import { GenreComponent } from './components/genre/genre.component';
 import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
+import { AuthorComponent } from './components/author/author.component';
 
 const appRoutes: Routes = [
     {
@@ -33,6 +34,10 @@ const appRoutes: Routes = [
     {
         path: 'sach/:slug/:chap',
         component: ChapComponent 
+    },
+    {
+        path: 'tac-gia/:slug',
+        component: AuthorComponent 
     },
     {
         path: 'profile',

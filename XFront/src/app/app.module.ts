@@ -17,6 +17,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
 import { GenreComponent } from './components/genre/genre.component';
 import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
+import { AuthorComponent } from './components/author/author.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ChapComponent } from './components/book/chap.component';
     RankingComponent,
     GenreComponent,
     BookInfoComponent,
-    ChapComponent
+    ChapComponent,
+    AuthorComponent
   ],
   imports: [
     BrowserModule,
