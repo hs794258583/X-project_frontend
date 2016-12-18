@@ -18,6 +18,9 @@ import { GenreComponent } from './components/genre/genre.component';
 import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
+import { CreateBookComponent } from './components/book/createbook.component';
+import { ReviewDetailComponent } from './components/review/reviewDetail.component';
+import { CreateReviewComponent } from './components/review/createReview.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +28,14 @@ import { AuthorComponent } from './components/author/author.component';
     HomeComponent,
     ProfileComponent,
     ReviewComponent,
+    ReviewDetailComponent,
     RankingComponent,
     GenreComponent,
     BookInfoComponent,
     ChapComponent,
-    AuthorComponent
+    AuthorComponent,
+    CreateBookComponent,
+    CreateReviewComponent
   ],
   imports: [
     BrowserModule,

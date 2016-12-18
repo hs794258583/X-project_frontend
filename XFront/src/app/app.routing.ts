@@ -9,6 +9,9 @@ import { GenreComponent } from './components/genre/genre.component';
 import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
+import { CreateBookComponent } from './components/book/createbook.component';
+import { ReviewDetailComponent } from './components/review/reviewDetail.component';
+import { CreateReviewComponent } from './components/review/createReview.component';
 
 const appRoutes: Routes = [
     {
@@ -18,6 +21,10 @@ const appRoutes: Routes = [
     {
         path: 'thao-luan',
         component: ReviewComponent 
+    },
+    {
+        path: 'thao-luan/:slug',
+        component: ReviewDetailComponent 
     },
     {
         path: 'bang-xep-hang',
@@ -42,6 +49,16 @@ const appRoutes: Routes = [
     {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'them-sach',
+        component: CreateBookComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'them-bai-thao-luan',
+        component: CreateReviewComponent,
         canActivate: [AuthGuard]
     },
     { 
