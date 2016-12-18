@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
+import { SlugService } from '../../services/slug.service';
 AuthService
 
 @Component({
@@ -14,7 +15,6 @@ AuthService
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
   stories:any[] = [];
   datas = [];
   constructor(

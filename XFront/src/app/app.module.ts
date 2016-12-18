@@ -21,6 +21,7 @@ import { AuthorComponent } from './components/author/author.component';
 import { CreateBookComponent } from './components/book/createbook.component';
 import { ReviewDetailComponent } from './components/review/reviewDetail.component';
 import { CreateReviewComponent } from './components/review/createReview.component';
+import { SlugService } from './services/slug.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { CreateReviewComponent } from './components/review/createReview.componen
     routing,
     InfiniteScrollModule
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
