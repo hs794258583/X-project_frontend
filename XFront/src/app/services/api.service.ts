@@ -14,7 +14,7 @@ export class ApiService {
     getApi(_url:string) {
         return this._http.get(_url)
             .map((response: Response) => <any> response.json())
-            .do(data => console.log('All: ' +  JSON.stringify(data)))
+            // .do(data => console.log('All: ' +  JSON.stringify(data)))
             .catch(this.handleError);
     }
 

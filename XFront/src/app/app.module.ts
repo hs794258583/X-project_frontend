@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -11,7 +11,6 @@ import { AUTH_PROVIDERS } from 'angular2-jwt'
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { ApiService } from './services/api.service';
-import { ReviewComponent } from './components/review/review.component';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { GenreComponent } from './components/genre/genre.component';
@@ -19,33 +18,46 @@ import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
 import { CreateBookComponent } from './components/book/createbook.component';
-import { ReviewDetailComponent } from './components/review/reviewDetail.component';
-import { CreateReviewComponent } from './components/review/createReview.component';
 import { SlugService } from './services/slug.service';
+import { ReviewComponent } from './components/review/review.component';
+import { ReviewDetailComponent } from './components/review/review-detail/reviewDetail.component';
+import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
+import { ReviewListComponent } from './components/review/review-list/review-list.component';
+import { ReviewStartComponent } from './components/review/review-start.component';
+import { ReviewService } from './components/review/review.service';
+import { ReviewItemComponent } from './components/review/review-list/review-item.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfileComponent,
+
     ReviewComponent,
+    ReviewEditComponent,
     ReviewDetailComponent,
+    ReviewListComponent,
+    ReviewStartComponent,
+    ReviewItemComponent,
+    
     RankingComponent,
     GenreComponent,
     BookInfoComponent,
     ChapComponent,
     AuthorComponent,
-    CreateBookComponent,
-    CreateReviewComponent
+    CreateBookComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
+    ReactiveFormsModule,
     InfiniteScrollModule
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

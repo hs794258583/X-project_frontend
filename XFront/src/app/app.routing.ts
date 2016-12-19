@@ -10,8 +10,8 @@ import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
 import { CreateBookComponent } from './components/book/createbook.component';
-import { ReviewDetailComponent } from './components/review/reviewDetail.component';
-import { CreateReviewComponent } from './components/review/createReview.component';
+import { ReviewDetailComponent } from './components/review/review-detail/reviewDetail.component';
+import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 
 const appRoutes: Routes = [
     {
@@ -20,12 +20,18 @@ const appRoutes: Routes = [
     },
     {
         path: 'thao-luan',
-        component: ReviewComponent 
+        component: ReviewComponent
     },
-    {
-        path: 'thao-luan/:slug',
-        component: ReviewDetailComponent 
-    },
+       {  path: 'thao-luan/them-moi',
+        component: ReviewEditComponent
+       },   
+        {  path: 'thao-luan/:ReviewId',
+        component: ReviewDetailComponent
+       },
+       {  path: 'thao-luan/:ReviewId/edit',
+        component: ReviewEditComponent
+       },
+    
     {
         path: 'bang-xep-hang',
         component: RankingComponent 
@@ -51,16 +57,6 @@ const appRoutes: Routes = [
         component: ProfileComponent,
         canActivate: [AuthGuard]
     },
-    {
-        path: 'them-sach',
-        component: CreateBookComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'them-bai-thao-luan',
-        component: CreateReviewComponent,
-        canActivate: [AuthGuard]
-    },
     { 
         path: '**', 
         redirectTo: '', 
@@ -69,4 +65,4 @@ const appRoutes: Routes = [
 ];
 export const appRoutingProviders: any[] = [];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes);
