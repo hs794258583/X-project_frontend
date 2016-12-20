@@ -8,13 +8,13 @@ Author: Linh Ho
     <input type="text" placeholder="Tìm kiếm...">
     <a href="#!"><i class="material-icons">search</i></a>
 </div>
-<div class="results" 
+<div id="results" 
     infinite-scroll
     [infiniteScrollDistance]="scrollDistance"
     [infiniteScrollThrottle]="throttle"
     (scrolled)="onScrollDown()">
         <template ngFor let-story="$implicit" [ngForOf]="stories" let-i="index">
-            <div class="card" *ngIf="i<10">
+            <div class="card">
                 <div class="card-thumb">
                 <a routerLink="/sach/{{story.Slug}}"><img class="thumb" src="assets/smock/images/{{story.ImageUrl}}" alt=""></a>
                 </div>

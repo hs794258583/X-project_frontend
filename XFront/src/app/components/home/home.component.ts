@@ -7,9 +7,10 @@ AuthService
 @Component({
   selector: 'app-home',
   styles: [`
-    .results {
+    #results {
+      clear: block;
       height: 100%;
-      // overflow: scroll;
+      overflow: scroll;
     }
   `],
   templateUrl: './home.component.html'
@@ -32,25 +33,18 @@ export class HomeComponent implements OnInit {
       //           .subscribe(data => this.stories.push(<any[]>data),
       //                      error => this.stories = <any>error);
       this._api.getApi("http://localhost:4200/assets/smock/api/storyInHome.json")
-                .subscribe(data => this.stories = data,
-                           error => this.stories = <any>error);
+                .subscribe(data => this.stories = this.stories.concat(data),
+                           error => this.stories = error);
+                           console.log(this.stories);
     }
   
-  array = [];
-  sum = 100;
   throttle = 300;
   scrollDistance = 1;
-  title = 'Hello InfiniteScroll v0.2.8, Ng2 Final';
-
-  
-  addItems(startIndex, endIndex) {
-    for (let i = 0; i < this.sum; ++i) {
-      this.array.push(i);
-    }
-  }
   onScrollDown () {
-    console.log('scrolled!!');
-    this.getStoryList();
+    var ele = document.getElementById("results");
+      console.log('scrolled!!');
+      console.log(ele.offsetHeight);
+      this.getStoryList();
   }
 
 }

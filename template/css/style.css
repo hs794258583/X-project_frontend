@@ -432,3 +432,7 @@ footer {
         width: 70%;
     }
 }
+
+.result{
+    overflow: auto;
+}
