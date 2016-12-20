@@ -1,21 +1,8 @@
  <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-lg-12">
-          <button type="submit" class="btn btn-success" [disabled]="!reviewForm.valid">Save</button>
+          <button type="submit" class="btn btn-success">Save</button>
           <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-            <label for="ReviewId">Review Id</label>
-            <input
-              type="text"
-              id="ReviewId"
-              class="form-control"
-              formControlName="ReviewId">
-          </div>
         </div>
       </div>
 
@@ -57,11 +44,12 @@
           <div class="form-group">
             <label for="ReviewContent">Content</label>
             <textarea
-              type="text"
-              id="ReviewContent"
-              rows="6"
-              class="form-control"
-              formControlName="ReviewContent"></textarea>
+           
+            rows="10" 
+            cols="80"
+            id="ReviewContent"
+            class="form-control"
+            formControlName="ReviewContent"></textarea>
           </div>
         </div>
       </div>

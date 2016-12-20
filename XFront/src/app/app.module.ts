@@ -27,6 +27,7 @@ import { ReviewStartComponent } from './components/review/review-start.component
 import { ReviewService } from './components/review/review.service';
 import { ReviewItemComponent } from './components/review/review-list/review-item.component';
 
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { ReviewItemComponent } from './components/review/review-list/review-item
     ReviewListComponent,
     ReviewStartComponent,
     ReviewItemComponent,
-    
+
     RankingComponent,
     GenreComponent,
     BookInfoComponent,
@@ -55,7 +56,8 @@ import { ReviewItemComponent } from './components/review/review-list/review-item
     HttpModule,
     routing,
     ReactiveFormsModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    CKEditorModule
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService],
   bootstrap: [AppComponent]
