@@ -1,17 +1,13 @@
  <div class="card-review">
-    <div class="search-results">
-          <a [routerLink]="[ReviewId]" routerLinkActive="active">
-                <div class="card-thumb">
-                    <img src="{{review.ImageUrl}}" alt="nhà giả kim">
-                </div>
-                <div class="card-review-info">
-                    <h1>{{review.ReviewTitle}}</h1>
-                    <span>
-                        <a href="#!"> {{review.UserId}}</a> | {{review.CreatedDate}}                   
-                    </span>
-                    <span>{{review.ReviewContent}}</span>
-                </div>
-                  </a>
-    </div> 
-
- </div>
+    <div class="card-thumb">
+        <a [routerLink]="[ReviewId]"><img [src]="review.ImageUrl" alt="{{review.ReviewTitle}}"></a>
+    </div>
+    <div class="card-review-info">
+        <h1>{{review.ReviewTitle}}</h1>
+        <span>
+            <a [routerLink]="[ReviewId]"> {{review.UserId}}</a> | {{review.CreatedDate}}
+        
+        </span>
+        <span>{{review.ReviewContent}}</span>
+    </div>
+</div>

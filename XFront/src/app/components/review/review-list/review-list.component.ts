@@ -5,8 +5,7 @@ import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-review-list',
-  templateUrl: './review-list.component.html',
-  styleUrls: ['./review-list.component.css']
+  templateUrl: './review-list.component.html'
 })
 export class ReviewListComponent implements OnInit {
   reviews: Review[] = [];

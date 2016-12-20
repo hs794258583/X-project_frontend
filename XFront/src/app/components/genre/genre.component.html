@@ -7,7 +7,9 @@
     <input type="text" placeholder="Tìm kiếm...">
     <a href="#!"><i class="material-icons">search</i></a>
 </div>
-
+<div class="create-item">
+  <a class="create-book" href="#!"><i class="large material-icons">note_add</i></a>
+</div>
 <template ngFor let-story="$implicit" [ngForOf]="stories" let-i="index">
     <div class="card" *ngIf="i<10">
         <div class="card-thumb">

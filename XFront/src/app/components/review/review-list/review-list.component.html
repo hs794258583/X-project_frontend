@@ -1,12 +1,13 @@
 
 <div class="page-name">
-            <h1><i class="large material-icons">create</i></h1>
-             <a class="btn btn-success" [routerLink]="['them-moi']">New Review</a>
-
-            <h1>Thảo luận</h1>
-        </div>
-        <div class="search-form">
-            <input type="text" placeholder="Tìm kiếm...">
-            <a href="#!"><i class="material-icons">search</i></a>
+    <h1><i class="large material-icons">create</i></h1>
+    <h1>Thảo luận</h1>
+</div>
+<div class="create-item">
+  <a class="create-review" [routerLink]="['them-moi']"><i class="large material-icons">create</i></a>
+</div>
+<div class="search-form">
+    <input type="text" placeholder="Tìm kiếm...">
+    <a href="#!"><i class="material-icons">search</i></a>
 </div>
   <app-reviewItem *ngFor="let review of reviews; let i = index" [review]="review" [ReviewId]="i"></app-reviewItem>
