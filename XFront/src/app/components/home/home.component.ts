@@ -9,14 +9,18 @@ AuthService
   styles: [`
     .results {
       height: 100%;
-      // overflow: scroll;
+      overflow: scroll;
     }
   `],
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  stories:any[] = [];
+  stories = [];
   datas = [];
+  sum = 100;
+  throttle = 300;
+  scrollDistance = 1;
+  
   constructor(
     private _auth: AuthService,
     private _api: ApiService
@@ -28,26 +32,11 @@ export class HomeComponent implements OnInit {
 
   getStoryList(){
      // Author: Linh Ho
-      // this._api.getApi("http://localhost:4200/assets/smock/api/storyInHome.json")
-      //           .subscribe(data => this.stories.push(<any[]>data),
-      //                      error => this.stories = <any>error);
       this._api.getApi("http://localhost:4200/assets/smock/api/storyInHome.json")
-                .subscribe(data => this.stories = data,
+                .subscribe(data => this.stories = this.stories.concat(data),
                            error => this.stories = <any>error);
     }
   
-  array = [];
-  sum = 100;
-  throttle = 300;
-  scrollDistance = 1;
-  title = 'Hello InfiniteScroll v0.2.8, Ng2 Final';
-
-  
-  addItems(startIndex, endIndex) {
-    for (let i = 0; i < this.sum; ++i) {
-      this.array.push(i);
-    }
-  }
   onScrollDown () {
     console.log('scrolled!!');
     this.getStoryList();

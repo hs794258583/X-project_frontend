@@ -14,7 +14,7 @@ Author: Linh Ho
     [infiniteScrollThrottle]="throttle"
     (scrolled)="onScrollDown()">
         <template ngFor let-story="$implicit" [ngForOf]="stories" let-i="index">
-            <div class="card" *ngIf="i<10">
+            <div class="card">
                 <div class="card-thumb">
                 <a routerLink="/sach/{{story.Slug}}"><img class="thumb" src="assets/smock/images/{{story.ImageUrl}}" alt=""></a>
                 </div>
