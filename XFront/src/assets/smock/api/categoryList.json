@@ -1,0 +1,72 @@
+[
+    {
+        "GenreId": 1,
+        "GenreName": "Tiên hiệp",
+        "GenreSlug": "tien-hiep"
+    },
+    {
+        "GenreId": 2,
+        "GenreName": "Kiếm hiệp",
+        "GenreSlug": "kiem-hiep"
+    },
+    {
+        "GenreId": 3,
+        "GenreName": "Quan Trường",
+        "GenreSlug": "quan-truong"
+    },
+    {
+        "GenreId": 4,
+        "GenreName": "Khoa Huyễn",
+        "GenreSlug": "khoa-huyen"
+    },
+    {
+        "GenreId": 5,
+        "GenreName": "Dị Giới",
+        "GenreSlug": "di-gioi"
+    },
+    {
+        "GenreId": 6,
+        "GenreName": "Quân Sự",
+        "GenreSlug": "quan-su"
+    },
+    {
+        "GenreId": 7,
+        "GenreName": "Xuyên Không",
+        "GenreSlug": "xuyen-khong"
+    },
+    {
+        "GenreId": 8,
+        "GenreName": "Trinh Thám",
+        "GenreSlug": "trinh-tham"
+    },
+    {
+        "GenreId": 9,
+        "GenreName": "Đô Thị",
+        "GenreSlug": "do-thi"
+    },
+    {
+        "GenreId": 10,
+        "GenreName": "Huyền Huyễn",
+        "GenreSlug": "huyen-huyen"
+    },
+    {
+        "GenreId": 11,
+        "GenreName": "Thám Hiểm",
+        "GenreSlug": "tham-hiem"
+    },
+    {
+        "GenreId": 12,
+        "GenreName": "Hài Hước",
+        "GenreSlug": "hai-huoc"
+    },
+    {
+        "GenreId": 13,
+        "GenreName": "Cổ Đại",
+        "GenreSlug": "co-dai"
+    },
+    {
+        "GenreId": 14,
+        "GenreName": "Truyện Teen",
+        "GenreSlug": "truyen-teen"
+    }
+]
