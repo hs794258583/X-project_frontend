@@ -1,0 +1,12 @@
+<template ngFor let-review="$implicit" [ngForOf]="reviews" let-i="index">
+        <div class="review-content">
+            <div class="review-thumb">
+                <a routerLink="{{review.Slug}}"><img [src]="review.Image" [alt]="review.ReviewTitle"></a>
+            </div>
+            <div>
+                <h1 class="title"><a routerLink="{{review.Slug}}">{{review.ReviewTitle}}</a></h1>
+                <span class="info">Linh HO</span>
+                <span [innerHTML]="review.ReviewContent"></span>
+            </div>
+        </div>
+    </template>

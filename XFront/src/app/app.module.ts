@@ -21,6 +21,8 @@ import { SlugService } from './services/slug.service';
 import { ReviewComponent } from './components/review/review.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { ReviewDetailComponent } from './components/review/reviewDetail.component';
+import { ReviewService } from './components/review/review.service';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     GenreComponent,
     BookInfoComponent,
     ChapComponent,
-    AuthorComponent
+    AuthorComponent,
+    ReviewDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     InfiniteScrollModule,
     CKEditorModule
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

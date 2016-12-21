@@ -70,7 +70,7 @@ export class ReviewEditComponent implements OnInit {
       let ReviewContent = '';   
       if(!this._isNew) {
         ReviewTitle = this._review.ReviewTitle;
-        ImageUrl = this._review.ImageUrl;
+        ImageUrl = this._review.Image;
         ReviewContent = this._review.ReviewContent;
       }
   this.reviewForm = this._formBuilder.group({

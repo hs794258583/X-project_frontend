@@ -6,7 +6,7 @@ import { Review } from '../../model/review.model';
 AuthService
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-review',
   styles: [`
     .results {
         height: 100%;
