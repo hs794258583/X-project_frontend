@@ -17,8 +17,8 @@ AuthService
 })
 export class HomeComponent implements OnInit {
   stories = [];
-  datas = [];
-  sum = 100;
+  sum = 2;
+  start = 1;
   throttle = 300;
   scrollDistance = 1;
   
@@ -28,19 +28,20 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getStoryList();
+    this.getStoryList(this.start);
   }
 
-  getStoryList(){
+  getStoryList(start:number){
      // Author: Linh Ho
-      this._api.getApi("http://localhost:4200/assets/smock/api/storyInHome.json")
+     let end = start + this.sum -1;
+      this._api.getApi("http://api.xtale.net/api/Stories/range/"+start+"/"+end)
                 .subscribe(data => this.stories = this.stories.concat(data),
                            error => this.stories = <any>error);
-    }
+  }
   
   onScrollDown () {
-    console.log('scrolled!!');
-    this.getStoryList();
+    this.start = this.start + this.sum;
+    this.getStoryList(this.start);
   }
 
 }

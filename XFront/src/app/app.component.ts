@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   }
   getCategoryList(){
      // Author: Linh Ho
-      this._api.getApi("http://localhost:4200/assets/smock/api/categoryList.json")
+      this._api.getApi("http://api.xtale.net/api/Genres")
                 .subscribe(data => this.categoryList = data,
                            error => this.errorMessage = <any>error);
     }

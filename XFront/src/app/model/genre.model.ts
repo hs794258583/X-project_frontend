@@ -1,5 +1,6 @@
 export interface Genre {
     "GenreId": number,
     "GenreName": string,
-    "GenreSlug": string
+    "GenreStatus": number,
+    "Slug": string,
 }
