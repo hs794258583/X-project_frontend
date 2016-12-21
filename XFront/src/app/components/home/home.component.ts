@@ -16,7 +16,7 @@ AuthService
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  stories = [];
+  stories:Story[] = [];
   sum = 2;
   start = 1;
   throttle = 300;
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   getStoryList(start:number){
      // Author: Linh Ho
-     let end = start + this.sum -1;
+     let end = start + this.sum - 1;
       this._api.getApi("http://api.xtale.net/api/Stories/range/"+start+"/"+end)
                 .subscribe(data => this.stories = this.stories.concat(data),
                            error => this.stories = <any>error);

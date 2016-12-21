@@ -19,13 +19,7 @@ import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
 import { SlugService } from './services/slug.service';
 import { ReviewComponent } from './components/review/review.component';
-import { ReviewDetailComponent } from './components/review/review-detail/reviewDetail.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
-import { ReviewListComponent } from './components/review/review-list/review-list.component';
-import { ReviewStartComponent } from './components/review/review-start.component';
-import { ReviewService } from './components/review/review.service';
-import { ReviewItemComponent } from './components/review/review-list/review-item.component';
-
 import { CKEditorModule } from 'ng2-ckeditor';
 
 
@@ -34,14 +28,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     AppComponent,
     HomeComponent,
     ProfileComponent,
-
     ReviewComponent,
     ReviewEditComponent,
-    ReviewDetailComponent,
-    ReviewListComponent,
-    ReviewStartComponent,
-    ReviewItemComponent,
-
     RankingComponent,
     GenreComponent,
     BookInfoComponent,
@@ -57,7 +45,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     InfiniteScrollModule,
     CKEditorModule
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
