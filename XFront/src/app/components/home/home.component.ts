@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
 import { SlugService } from '../../services/slug.service';
+import { Story } from '../../model/story.model';
 AuthService
 
 @Component({

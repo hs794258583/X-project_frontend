@@ -9,7 +9,6 @@ import { GenreComponent } from './components/genre/genre.component';
 import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
-import { CreateBookComponent } from './components/book/createbook.component';
 import { ReviewDetailComponent } from './components/review/review-detail/reviewDetail.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 
@@ -22,16 +21,18 @@ const appRoutes: Routes = [
         path: 'thao-luan',
         component: ReviewComponent
     },
-       {  path: 'thao-luan/them-moi',
+    {  
+        path: 'thao-luan/them-moi',
         component: ReviewEditComponent
-       },   
-        {  path: 'thao-luan/:ReviewId',
+    },   
+    {  
+        path: 'thao-luan/:ReviewId',
         component: ReviewDetailComponent
-       },
-       {  path: 'thao-luan/:ReviewId/edit',
+    },
+    {   
+        path: 'thao-luan/:ReviewId/edit',
         component: ReviewEditComponent
-       },
-    
+    },
     {
         path: 'bang-xep-hang',
         component: RankingComponent 

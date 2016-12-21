@@ -17,7 +17,6 @@ import { GenreComponent } from './components/genre/genre.component';
 import { BookInfoComponent } from './components/book/bookInfo.component';
 import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
-import { CreateBookComponent } from './components/book/createbook.component';
 import { SlugService } from './services/slug.service';
 import { ReviewComponent } from './components/review/review.component';
 import { ReviewDetailComponent } from './components/review/review-detail/reviewDetail.component';
@@ -47,8 +46,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     GenreComponent,
     BookInfoComponent,
     ChapComponent,
-    AuthorComponent,
-    CreateBookComponent
+    AuthorComponent
   ],
   imports: [
     BrowserModule,
