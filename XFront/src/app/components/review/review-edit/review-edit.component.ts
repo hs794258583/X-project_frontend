@@ -4,6 +4,7 @@ import { Review } from '../../../model/review.model';
 import { Subscription } from 'rxjs/Rx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../review.service';
+import { SlugService } from '../../../services/slug.service';
 
 @Component({
   selector: 'app-review-edit',
@@ -20,12 +21,14 @@ export class ReviewEditComponent implements OnInit {
   constructor(private _route: ActivatedRoute,
               private _reviewService: ReviewService,
               private _formBuilder: FormBuilder,
-              private _router:Router) { 
+              private _router:Router,
+              private _slug:SlugService) { 
                 this.content = '<p>Hello <strong>World !</strong></p>'
               }
 
   ngOnInit() {
-    window['CKEDITOR']['replace']('ReviewContent');
+    //window['CKEDITOR']['replace']('ReviewContent');
+
      this._subscription = this._route.params.subscribe(  
       (params: any) =>  {        
         if (params.hasOwnProperty('ReviewId')) {
@@ -66,12 +69,22 @@ export class ReviewEditComponent implements OnInit {
 
   private initForm() {  
       let ReviewTitle = '';
-      let ImageUrl = '';
-      let ReviewContent = '';   
+      let ReviewContent = '';
+      let ReviewStatus = 0;
+      let CreatedDate = Date.now.toString();
+      let ImageUrl ='';
+      let UserId = '';
+      let Score = 0;
+      let RateCount = 0;
+      let Slug = '';
+
       if(!this._isNew) {
         ReviewTitle = this._review.ReviewTitle;
         ImageUrl = this._review.Image;
         ReviewContent = this._review.ReviewContent;
+        Slug = this._slug.getSlug(ReviewTitle);
+        Score = this._review.Score;
+        CreatedDate = this._review.CreatedDate;     
       }
   this.reviewForm = this._formBuilder.group({
     ReviewTitle: [ReviewTitle, Validators.required],
@@ -79,5 +92,4 @@ export class ReviewEditComponent implements OnInit {
     ReviewContent: [ReviewContent]
   })
   }
-
 }

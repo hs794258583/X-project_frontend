@@ -37,7 +37,7 @@ export class ReviewService {
     const headers = new Headers({
         'Content-Type': 'application/json'
     });
-    return this._http.put('https://angular2-course-178bd.firebaseio.com/review.json', body, {headers: headers});
+    return this._http.post('http://api.xtale.net/api/reviews', body, {headers: headers});
   }
 
   onStore(){
@@ -48,7 +48,7 @@ export class ReviewService {
   }
 
   fetchData(){
-    return this._http.get('https://angular2-course-178bd.firebaseio.com/review.json')
+    return this._http.get('http://api.xtale.net/api/reviews')
            .map((response: Response) => response.json())
            .subscribe(
              (data: Review[]) => {
