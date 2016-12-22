@@ -7,7 +7,7 @@
     <a href="#!"><i class="material-icons">search</i></a>
 </div>
 
-<div class="create-item">
+<div class="create-item" *ngIf="_auth.authenticated()">
   <a class="create-review" routerLink="/thao-luan/them-moi"><i class="large material-icons">create</i></a>
 </div>
 

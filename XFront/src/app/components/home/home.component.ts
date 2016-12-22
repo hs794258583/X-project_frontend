@@ -17,7 +17,7 @@ AuthService
 })
 export class HomeComponent implements OnInit {
   stories:Story[] = [];
-  sum = 2;
+  sum = 12;
   start = 1;
   throttle = 300;
   scrollDistance = 1;

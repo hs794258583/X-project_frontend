@@ -22,7 +22,7 @@ AuthService
 })
 export class ReviewComponent implements OnInit {
   reviews:Review[] = [];
-  sum = 2;
+  sum = 6;
   start = 1;
   throttle = 300;
   scrollDistance = 1;

@@ -2,7 +2,7 @@
 Author: Linh Ho
 -->
 <div class="book-info" *ngFor="let book of bookInfo">
-    <img src="assets/smock/images/Nha_gia_kim.jpg" alt="Nhà giả kim">
+    <img [src]="book.Image" alt="{{book.StoryName}}">
     <h1>{{book.StoryName}}</h1>
     <div class="download-ebook">
         <a href="#!">Download Ebook</a>

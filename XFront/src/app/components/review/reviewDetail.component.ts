@@ -17,7 +17,7 @@ export class ReviewDetailComponent implements OnInit {
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
-     private _route: ActivatedRoute,
+    private _route: ActivatedRoute,
     private _router: Router 
   ) { }
 

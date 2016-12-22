@@ -11,6 +11,7 @@ AuthService
 export class BookInfoComponent implements OnInit {
   bookInfo:any[];
   listChap:any[];
+  slug:string;
   sub: any;
   constructor(
     private _auth: AuthService,
@@ -21,20 +22,21 @@ export class BookInfoComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this._route.params.subscribe(params => {
-      this.getBookInfo(params['slug']);
+      this.slug = params['slug'];
+      this.getBookInfo(this.slug);
+      this.getListChap(this.slug);
     });
-    this.getListChap();
   }
   
-   getBookInfo(bookSlug){
+   getBookInfo(bookSlug:string){
      // Author: Linh Ho
       this._api.getApi("http://api.xtale.net/api/Stories/name/"+bookSlug)
                 .subscribe(data => this.bookInfo = data,
                            error => this.bookInfo = <any>error);
     }
-    getListChap(){
+    getListChap(bookSlug:string){
      // Author: Linh Ho
-      this._api.getApi("http://localhost:4200/assets/smock/api/listChap.json")
+      this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/1/20")
                 .subscribe(data => this.listChap = data,
                            error => this.listChap = <any>error);
     }
