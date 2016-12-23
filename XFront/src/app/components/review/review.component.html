@@ -7,13 +7,11 @@
     <a href="#!"><i class="material-icons">search</i></a>
 </div>
 
-<<<<<<< Updated upstream
 <div class="create-item" *ngIf="_auth.authenticated()">
   <a class="create-review" routerLink="/thao-luan/them-moi"><i class="large material-icons">create</i></a>
-=======
+</div>
 <div class="create-item">
   <a class="create-review" [routerLink]="['them-moi']"><i class="large material-icons">create</i></a>
->>>>>>> Stashed changes
 </div>
 
 <div class="results"
@@ -21,7 +19,7 @@
     [infiniteScrollDistance]="scrollDistance"
     [infiniteScrollThrottle]="throttle"
     (scrolled)="onScrollDown()">
-    <template ngFor let-review="$implicit" [ngForOf]="reviews" let-i="index">
+    <template ngFor let-review="$implicit" [ngForOf]="reviews">
         <div class="card-review">
             <div class="card-thumb">
                 <a routerLink="{{review.Slug}}"><img [src]="review.Image" [alt]="review.ReviewTitle"></a>

@@ -22,10 +22,10 @@ AuthService
 })
 export class ReviewComponent implements OnInit {
   reviews:Review[] = [];
-  sum = 6;
-  start = 1;
-  throttle = 300;
-  scrollDistance = 1;
+  sum:number = 6;
+  start:number = 1;
+  throttle:number = 300;
+  scrollDistance:number = 1;
   
   constructor(
     private _auth: AuthService,
@@ -38,13 +38,13 @@ export class ReviewComponent implements OnInit {
 
   getStoryList(start:number){
      // Author: Linh Ho
-     let end = start + this.sum - 1;
+     let end:number = start + this.sum - 1;
       this._api.getApi("http://api.xtale.net/api/Reviews/range/"+start+"/"+end)
                 .subscribe(data => this.reviews = this.reviews.concat(data),
                            error => this.reviews = <any>error);
   }
   
-  onScrollDown () {
+  onScrollDown() {
     this.start = this.start + this.sum;
     this.getStoryList(this.start);
   }

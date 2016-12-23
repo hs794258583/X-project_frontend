@@ -21,10 +21,7 @@ import { SlugService } from './services/slug.service';
 import { ReviewComponent } from './components/review/review.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 import { CKEditorModule } from 'ng2-ckeditor';
-<<<<<<< Updated upstream
 import { ReviewDetailComponent } from './components/review/reviewDetail.component';
-=======
->>>>>>> Stashed changes
 import { ReviewService } from './components/review/review.service';
 
 
@@ -40,10 +37,7 @@ import { ReviewService } from './components/review/review.service';
     BookInfoComponent,
     ChapComponent,
     AuthorComponent,
-<<<<<<< Updated upstream
     ReviewDetailComponent
-=======
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

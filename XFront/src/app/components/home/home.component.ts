@@ -17,10 +17,11 @@ AuthService
 })
 export class HomeComponent implements OnInit {
   stories:Story[] = [];
-  sum = 12;
-  start = 1;
-  throttle = 300;
-  scrollDistance = 1;
+  sum:number = 10;
+  start:number = 1;
+  throttle:number = 300;
+  scrollDistance:number = 1;
+  dataStatus:boolean = true;
   
   constructor(
     private _auth: AuthService,
@@ -33,15 +34,17 @@ export class HomeComponent implements OnInit {
 
   getStoryList(start:number){
      // Author: Linh Ho
-     let end = start + this.sum - 1;
+     let end:number = start + this.sum - 1;
       this._api.getApi("http://api.xtale.net/api/Stories/range/"+start+"/"+end)
                 .subscribe(data => this.stories = this.stories.concat(data),
-                           error => this.stories = <any>error);
+                           error => this.dataStatus = false);
   }
   
   onScrollDown () {
-    this.start = this.start + this.sum;
-    this.getStoryList(this.start);
+    if(this.dataStatus == true){
+      console.log(this.start);
+      this.start = this.start + this.sum;
+      this.getStoryList(this.start);
+    }
   }
-
 }

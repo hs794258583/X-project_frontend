@@ -22,6 +22,7 @@ export class ChapComponent implements OnInit {
   start = 1;
   throttle = 300;
   scrollDistance = 1;
+  dataStatus = true;
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
@@ -41,14 +42,16 @@ export class ChapComponent implements OnInit {
      // Author: Linh Ho
       this._api.getApi("http://api.xtale.net/api/Chapters/"+bookSlug+"/"+chap)
                 .subscribe(data => this.chaps = this.chaps.concat(data),
-                           error => this.chaps = <any>error);
+                           error => this.dataStatus = false);
     }
 
   onScrollDown () {
-    this.start = this.start + this.sum;
-    this.chap = this.chap + 1;
-    console.log(this.chap);
-    this.getChapContent(this.slug, this.chap);
+    if(this.dataStatus == true){
+      this.start = this.start + this.sum;
+      this.chap = this.chap + 1;
+      console.log(this.chap);
+      this.getChapContent(this.slug, this.chap);
+    }
   }
   
 }
