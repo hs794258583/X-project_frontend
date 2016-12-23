@@ -26,7 +26,8 @@ export class ReviewComponent implements OnInit {
   start:number = 1;
   throttle:number = 300;
   scrollDistance:number = 1;
-  
+  dataStatus:boolean = true;
+
   constructor(
     private _auth: AuthService,
     private _api: ApiService
@@ -41,12 +42,14 @@ export class ReviewComponent implements OnInit {
      let end:number = start + this.sum - 1;
       this._api.getApi("http://api.xtale.net/api/Reviews/range/"+start+"/"+end)
                 .subscribe(data => this.reviews = this.reviews.concat(data),
-                           error => this.reviews = <any>error);
+                           error => this.dataStatus = false);
   }
   
   onScrollDown() {
-    this.start = this.start + this.sum;
-    this.getStoryList(this.start);
+    if(this.dataStatus == true){
+      this.start = this.start + this.sum;
+      this.getStoryList(this.start);
+    }
   }
 
 }
