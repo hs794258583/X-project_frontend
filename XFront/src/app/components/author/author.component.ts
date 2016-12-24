@@ -35,6 +35,7 @@ export class AuthorComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this._route.params.subscribe(params => {
+      this.stories = [];
       this.getStoryList(this.start, params['slug']);
       this.slug = params['slug'];
     });
