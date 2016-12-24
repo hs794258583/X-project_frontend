@@ -23,6 +23,8 @@ import { ReviewEditComponent } from './components/review/review-edit/review-edit
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ReviewDetailComponent } from './components/review/reviewDetail.component';
 import { ReviewService } from './components/review/review.service';
+import { Ng2UploaderModule } from 'ng2-uploader';
+import { BookCreateComponent } from './components/book/book-create/book-create.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { ReviewService } from './components/review/review.service';
     BookInfoComponent,
     ChapComponent,
     AuthorComponent,
-    ReviewDetailComponent
+    ReviewComponent,
+    ReviewDetailComponent,
+    BookCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import { ReviewService } from './components/review/review.service';
     ReactiveFormsModule,
     InfiniteScrollModule,
     CKEditorModule,
-    
+     Ng2UploaderModule
+     
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService],
   bootstrap: [AppComponent]

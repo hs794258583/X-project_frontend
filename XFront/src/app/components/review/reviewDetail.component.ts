@@ -4,7 +4,9 @@ import { ApiService } from '../../services/api.service';
 import { SlugService } from '../../services/slug.service';
 import { Review } from '../../model/review.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-AuthService
+import { ReviewService } from './review.service';
+import { Subscription } from 'rxjs/Rx';
+
 
 @Component({
   selector: 'app-reviewDetail',
@@ -14,16 +16,30 @@ export class ReviewDetailComponent implements OnInit {
   reviews:Review[] = [];
   slug:string;
   sub: any;
+
+  private _subscription: Subscription;
+  private reviewIndex: number;
+  selectedReview: any;
+  
+
+
+
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
     private _route: ActivatedRoute,
-    private _router: Router 
+    private _router: Router,
+    private _reviewService: ReviewService
   ) { }
 
   ngOnInit() {
     this.sub = this._route.params.subscribe(params => {
       this.getStoryList(params['slug']);
+      (params: any) => {
+        this.reviewIndex = params['id'];
+        this.selectedReview = this._reviewService.getReview(this.reviewIndex);
+        console.log(this.selectedReview);
+      }
     });
   }
 
@@ -32,5 +48,17 @@ export class ReviewDetailComponent implements OnInit {
                 .subscribe(data => this.reviews = this.reviews.concat(data),
                            error => this.reviews = <any>error);
   }
-  
+
+  //Delete Review
+  deleteReview(review: Review) {
+      this._reviewService.removeReview(review.ReviewId)
+                          .subscribe(data => this.reviews = data);
+        this.getStoryList(review.Slug);
+       this._reviewService.navigateBack();
+  }
+
+  //Edit Review
+  editReview() {
+     this._router.navigate(['/thao-luan', this.reviewIndex, 'edit']);
+  } 
 }

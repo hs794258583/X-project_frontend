@@ -9,7 +9,6 @@ declare var Auth0Lock: any;
 export class AuthService {
   // configure Auth0
   lock = new Auth0Lock('TcLiafZN9iriIMcyvr7zlYNKFYcvtYuG', 'xmanga.auth0.com', {});
-
   constructor() {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult:any) => {
@@ -28,11 +27,9 @@ export class AuthService {
      // Call the show method to display the widget.
      this.lock.show();
    }
-
    public authenticated() {
      return tokenNotExpired();
    }
-
    public logout() {
      // Remove info from localStorage
      localStorage.removeItem('id_token');
