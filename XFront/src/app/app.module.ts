@@ -25,6 +25,7 @@ import { ReviewDetailComponent } from './components/review/reviewDetail.componen
 import { ReviewService } from './components/review/review.service';
 import { Ng2UploaderModule } from 'ng2-uploader';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
+import { StarComponent } from './components/star/star.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { BookCreateComponent } from './components/book/book-create/book-create.c
     AuthorComponent,
     ReviewComponent,
     ReviewDetailComponent,
-    BookCreateComponent
+    BookCreateComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
+import { SlugService } from '../../services/slug.service';
+import { Story } from '../../model/story.model';
+import { ActivatedRoute, Router } from '@angular/router';
 AuthService
 
 @Component({
@@ -8,49 +11,55 @@ AuthService
   styles: [`
     .results {
       height: 100%;
-      // overflow: scroll;
+      overflow: scroll;
     }
   `],
   templateUrl: './author.component.html'
 })
 export class AuthorComponent implements OnInit {
-
-  stories:any[] = [];
-  datas = [];
+  stories:Story[] = [];
+  sum:number = 10;
+  start:number = 1;
+  throttle:number = 300;
+  scrollDistance:number = 1;
+  dataStatus:boolean = true;
+  slug:string;
+  sub:any;
+  
   constructor(
     private _auth: AuthService,
-    private _api: ApiService
+    private _api: ApiService,
+    private _route: ActivatedRoute,
+    private _router: Router 
   ) { }
 
   ngOnInit() {
-    this.getStoryList();
+    this.sub = this._route.params.subscribe(params => {
+      this.getStoryList(this.start, params['slug']);
+      this.slug = params['slug'];
+    });
   }
 
-  getStoryList(){
+  getStoryList(start:number, params:string){
      // Author: Linh Ho
-      // this._api.getApi("http://localhost:4200/assets/smock/api/storyInHome.json")
-      //           .subscribe(data => this.stories.push(<any[]>data),
-      //                      error => this.stories = <any>error);
-      this._api.getApi("http://localhost:4200/assets/smock/api/storyInHome.json")
-                .subscribe(data => this.stories = data,
-                           error => this.stories = <any>error);
-    }
-  
-  array = [];
-  sum = 100;
-  throttle = 300;
-  scrollDistance = 1;
-  title = 'Hello InfiniteScroll v0.2.8, Ng2 Final';
-
-  
-  addItems(startIndex, endIndex) {
-    for (let i = 0; i < this.sum; ++i) {
-      this.array.push(i);
-    }
+     let end:number = start + this.sum - 1;
+      this._api.getApi("http://api.xtale.net/api/Stories/author/"+params+"/"+start+"/"+end)
+                .subscribe(data => this.stories = this.stories.concat(data),
+                           error => this.dataStatus = false);
+      //check data null
+     this._api.getApi("http://api.xtale.net/api/Stories/author/"+params+"/"+(start+this.sum)+"/"+(end+this.sum))
+                .subscribe(data => {
+                    if(data.length<1){
+                      this.dataStatus = false;
+                    }
+                },error => this.dataStatus = false);
   }
+  
   onScrollDown () {
-    console.log('scrolled!!');
-    this.getStoryList();
+    if(this.dataStatus == true){
+      console.log(this.start);
+      this.start = this.start + this.sum;
+      this.getStoryList(this.start,this.slug);
+    }
   }
-
 }
