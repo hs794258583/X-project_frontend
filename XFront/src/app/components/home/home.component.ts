@@ -38,6 +38,13 @@ export class HomeComponent implements OnInit {
       this._api.getApi("http://api.xtale.net/api/Stories/range/"+start+"/"+end)
                 .subscribe(data => this.stories = this.stories.concat(data),
                            error => this.dataStatus = false);
+      //check data null
+     this._api.getApi("http://api.xtale.net/api/Stories/range/"+(start+this.sum)+"/"+(end+this.sum))
+                .subscribe(data => {
+                    if(data.length<1){
+                      this.dataStatus = false;
+                    }
+                },error => this.dataStatus = false);
   }
   
   onScrollDown () {

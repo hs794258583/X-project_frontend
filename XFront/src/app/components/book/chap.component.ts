@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 AuthService
 
 @Component({
@@ -28,6 +29,7 @@ export class ChapComponent implements OnInit {
     private _api: ApiService,
     private _route: ActivatedRoute,
     private _router: Router,
+    private _location:Location
   ) { }
 
   ngOnInit() {
@@ -41,7 +43,15 @@ export class ChapComponent implements OnInit {
   getChapContent(bookSlug:string, chap:number){
      // Author: Linh Ho
       this._api.getApi("http://api.xtale.net/api/Chapters/"+bookSlug+"/"+chap)
-                .subscribe(data => this.chaps = this.chaps.concat(data),
+                .subscribe(data =>this.chaps = this.chaps.concat(data),
+                           error => this.dataStatus = false);
+     //check null chap
+     this._api.getApi("http://api.xtale.net/api/Chapters/"+bookSlug+"/"+(chap+1))
+                .subscribe(data => {
+                    if(data.length<1){
+                      this.dataStatus = false;
+                    }
+                },
                            error => this.dataStatus = false);
     }
 
@@ -50,7 +60,7 @@ export class ChapComponent implements OnInit {
       this.start = this.start + this.sum;
       this.chap = this.chap + 1;
       console.log(this.chap);
-      this.getChapContent(this.slug, this.chap);
+      this._router.navigateByUrl("/sach/"+this.slug+"/"+this.chap);
     }
   }
   

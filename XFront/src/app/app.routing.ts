@@ -23,7 +23,8 @@ const appRoutes: Routes = [
     },
     {  
         path: 'thao-luan/them-moi',
-        component: ReviewEditComponent
+        component: ReviewEditComponent,
+        canActivate: [AuthGuard]
     },   
     {  
         path: 'thao-luan/:slug',
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     },
     {   
         path: 'thao-luan/:ReviewId/edit',
-        component: ReviewEditComponent
+        component: ReviewEditComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'bang-xep-hang',

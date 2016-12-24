@@ -15,7 +15,11 @@ Author: Linh Ho
         <input type="text" placeholder="Tìm kiếm chap...">
         <a href="#!"><i class="material-icons">search</i></a>
     </div>
-    <ul>
+    <ul
+        infinite-scroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollThrottle]="throttle"
+        (scrolled)="onScrollDown()">
         <li *ngFor="let chap of listChap">Chap {{chap.ChapterNumber}} - <a routerLink="{{chap.ChapterNumber}}">{{chap.ChapterTitle}}</a></li>
     </ul>
 </div>

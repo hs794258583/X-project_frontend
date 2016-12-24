@@ -229,10 +229,13 @@ footer {
     
 }
 .ranking-form li {
-    height: 35px;
-    margin-top: 12px;
+    height: 42px;
+    margin-top: 10px;
     margin-right: 10px;
-    border-bottom: solid 1px #757575; 
+    border-bottom: solid 1px #757575;
+}
+.ranking-form li a {
+    font-size: 0.9rem;
 }
 .ranking-form span {
     padding: 10px;
@@ -346,7 +349,7 @@ footer {
     color: #fff;
 }
 .list-chap ul {
-    height: 70vh;
+    max-height: 70vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
