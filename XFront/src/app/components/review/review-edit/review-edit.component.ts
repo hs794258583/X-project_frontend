@@ -126,6 +126,6 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
     RateCount : [RateCount],
     Image: [ImageUrl],
     Slug: [Slug]
-  })
+  });
   }
 }

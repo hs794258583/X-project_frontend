@@ -19,13 +19,18 @@ getBooks(){
                      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 }
 
-getBook(Id: number){
-    const url = `${this._baseUrl}/${Id}`;
-        return this._http.get(url)
-                        .map((res: Response) => res.json())
-                        .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-}
-//Create Review
+// getBook(Id: number){
+//     const url = `${this._baseUrl}/${Id}`;
+//         return this._http.get(url)
+//                         .map((res: Response) => res.json())
+//                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+// }
+
+ getBook(id: number) {
+    return this._books[id];
+  }
+  
+//Create Book
 addBook(book: Story){
   const body = JSON.stringify(book);
   const headers = new Headers({
@@ -41,16 +46,25 @@ addBook(book: Story){
                     )
 
 }
-//Update Review
-updateBook(Id:number): Observable<Story[]>{
-          return this._http.delete(`${this._baseUrl}/${Id}`)
+//Update Book
+updateBook(body: Object) {
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({
+      'Content-Type' : 'application/json'
+    });
+  console.log(body);
+   return this._http.put(`${this._baseUrl}/${body['Id']}`, body, headers)
+                      .map((res: Response) => res.json())
+                       .catch((error:any) => Observable.throw(error.json().error || 'Server error'))                    
+}
+
+//Remove Book
+removeBook(Id: number): Observable<Story[]>{
+    return this._http.delete(`${this._baseUrl}/${Id}`)
                     .map((res: Response) => res.json())
                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 }
-//Remove Review
-removeReview(){
 
-}
 
 navigateBack(){
  this._router.navigate(['']);

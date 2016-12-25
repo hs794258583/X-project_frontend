@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {APP_BASE_HREF} from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -25,7 +26,11 @@ import { ReviewDetailComponent } from './components/review/reviewDetail.componen
 import { ReviewService } from './components/review/review.service';
 import { Ng2UploaderModule } from 'ng2-uploader';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
+<<<<<<< Updated upstream
 import { StarComponent } from './components/star/star.component';
+=======
+import { BookService } from './components/book/book.service';
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -56,7 +61,7 @@ import { StarComponent } from './components/star/star.component';
      Ng2UploaderModule
      
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}, appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

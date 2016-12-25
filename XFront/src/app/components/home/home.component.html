@@ -9,8 +9,9 @@ Author: Linh Ho
     <a href="#!"><i class="material-icons">search</i></a>
 </div>
 <div class="create-item" *ngIf="_auth.authenticated()">
-  <a class="create-book" routerLink="/sach/them-moi"><i class="large material-icons">note_add</i></a>
+  <a class="create-book" routerLink="/sach/themsach"><i class="large material-icons">note_add</i></a>
 </div>
+
 <div class="results" 
     infinite-scroll
     [infiniteScrollDistance]="scrollDistance"

@@ -1,3 +1,62 @@
-<p>
-  book-create works!
-</p>
+ <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-lg-12">
+          <button type="submit" class="btn btn-success">Save</button>
+          <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="ReviewTitle">Tên Sách</label>
+            <input
+              type="text"
+              id="ReviewTitle"
+              class="form-control"
+              formControlName="ReviewTitle">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="Image">Image Url</label>
+            <input
+              type="text"
+              id="Image"
+              class="form-control"
+              formControlName="Image"
+              #imageUrl>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="img">
+            <img [src]="imageUrl.value">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="ReviewContent">Content</label>
+            <textarea          
+            rows="10" 
+            cols="80"
+            id="ReviewContent"
+            class="form-control"
+            formControlName="ReviewContent"></textarea>
+          </div>
+        </div>
+      </div> 
+    </form>
+
+
+

@@ -11,12 +11,14 @@ import { ChapComponent } from './components/book/chap.component';
 import { AuthorComponent } from './components/author/author.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 import { ReviewDetailComponent } from './components/review/reviewDetail.component';
+import { BookCreateComponent } from './components/book/book-create/book-create.component';
 
 const appRoutes: Routes = [
     {
         path: '',
         component: HomeComponent 
     },
+    //** Review Routing Section
     {
         path: 'thao-luan',
         component: ReviewComponent
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
         component: ReviewEditComponent,
         canActivate: [AuthGuard]
     },
+     //** End Review Routing Section
     {
         path: 'bang-xep-hang',
         component: RankingComponent 
@@ -43,6 +46,12 @@ const appRoutes: Routes = [
         path: 'chuyen-muc/:slug',
         component: GenreComponent 
     },
+    //** Book Routing Section
+      {  
+        path: 'sach/themsach',
+        component: BookCreateComponent,
+        canActivate: [AuthGuard]
+    }, 
     {
         path: 'sach/:slug',
         component: BookInfoComponent 
@@ -51,6 +60,9 @@ const appRoutes: Routes = [
         path: 'sach/:slug/:chap',
         component: ChapComponent 
     },
+    
+
+    // **End Book Routing Section
     {
         path: 'tac-gia/:slug',
         component: AuthorComponent 

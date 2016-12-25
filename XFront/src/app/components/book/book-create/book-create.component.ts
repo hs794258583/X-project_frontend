@@ -5,6 +5,7 @@ import { SlugService } from '../../../services/slug.service';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
+import { Story } from '../../../model/story.model';
 
 @Component({
   selector: 'app-book-create',
@@ -14,7 +15,7 @@ import { Subscription } from 'rxjs/Rx';
 export class BookCreateComponent implements OnInit, OnDestroy {
    bookForm: FormGroup;
    private _bookIndex: number;
-   private _book: any;
+   private _book: Story;
    private _subscription: Subscription;
    private _isNew = true;
    private _isDisplay = false;
@@ -61,18 +62,74 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     this._subscription.unsubscribe();
   }
 
+// Initialize form
   private initForm() {
       
-  //  let StoryName: '',
-  //  let StoryProgress: number,
-  //  let StoryStatus: number,
-  //  let "Author": any,
-  //  let "Genres":[any],
-  //  let "UserId": string,
-  //  let "Score": number,
-  //  let "RateCount": number,
-  //  let "Image": string,
-  //  let "Slug": string
-  }
+   let StoryName =  '';
+   let StoryProgress = 4;
+   let StoryDescription = '';
+   let StoryStatus = 1;
+   let Author = {
+     "AuthorId": 1,
+     "AuthorName": "Lomonoxov",
+     "AuthorStatus": 3,
+     "Slug": "Lo mon no xov",
+   };
+   let Genres = [
+     {
+       "GenreId": 1,
+      "GenreName": "Trinh Tham",
+      "GenreStatus": 3,
+      "Slug": "trinh tham",
+     }
+   ]
+   let CreatedDate = new Date().toUTCString();
+   let LastEditedDate = new Date().toUTCString();
+   let UserId = '9';
+   let Score = 0;
+   let RateCount = 0;
+   let Image = 'https://techpur.com/wp-content/plugins/facebook-share-like-popup-viralplus/default.jpg';
+   let Slug = 'sample string 106';
+   let Chapters = [{
+      "ChapterId": 1,
+      "StoryId": 2,
+      "ChapterNumber": 3,
+      "ChapterTitle": "sample string 4",
+   }];
 
+   if(!this._isNew) {
+      StoryName = this._book.StoryName;
+      StoryProgress = this._book.StoryProgress;
+      StoryDescription = this._book.StoryDescription;
+      StoryStatus = this._book.StoryStatus;
+      Author = this._book.Author;
+      Genres = this._book.Genres;
+      CreatedDate = this._book.CreatedDate.toUTCString();
+      LastEditedDate = this._book.LastEditedDate.toUTCString();
+      UserId = this._book.UserId;
+      Score = this._book.Score;
+      RateCount = this._book.RateCount;
+      Image = this._book.Image;
+      Slug = this._book.Slug;
+      Chapters = this._book.Chapters;
+   }
+
+   //Book FormBuiler
+   this.bookForm = this._formBuilder.group({
+      StoryName: [StoryName],
+      StoryProgress : [StoryProgress],
+      StoryDescription : [StoryDescription],
+      StoryStatus : [StoryStatus],
+      Author : [Author],
+      Genres : [Genres],
+      CreatedDate : [CreatedDate],
+      LastEditedDate : [LastEditedDate],
+      UserId : [UserId],
+      Score : [Score],
+      RateCount : [RateCount],
+      Image : [Image],
+      Slug : [Slug],
+      Chapters : [Chapters],
+   });
+  }
 }
