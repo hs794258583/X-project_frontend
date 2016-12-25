@@ -51,11 +51,18 @@ export class BookInfoComponent implements OnInit {
       this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/"+start+"/"+end)
                 .subscribe(data => this.listChap = this.listChap.concat(data),
                            error => this.listChap = <any>error);
+     // check Chapters
+     this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/"+(start+this.sum)+"/"+(end+this.sum))
+                .subscribe(data => {
+                  if(data.length<1){
+                      this.dataStatus = false;
+                  }
+                },
+                           error => this.listChap = <any>error);
     }
 
     onScrollDown () {
       if(this.dataStatus == true){
-        console.log(this.start);
         this.start = this.start + this.sum;
         this.getListChap(this.start,this.slug);
       }

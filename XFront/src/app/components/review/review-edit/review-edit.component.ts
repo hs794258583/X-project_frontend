@@ -21,7 +21,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
   private _subscription: Subscription;
   private _isNew = true;
   private _isDisplay = false;
-
+  UserInfo:any = JSON.parse(localStorage.getItem('profile'));
   constructor(private _route: ActivatedRoute,
               private _reviewService: ReviewService,
               private _formBuilder: FormBuilder,
@@ -97,11 +97,11 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
       let ReviewStatus = 1;
       let CreatedDate =  new Date().toUTCString();
       let LastEditedDate = new Date().toUTCString();
-      let UserId = '8';
+      let UserId = this.UserInfo.user_id;
       let Score = 0;
       let RateCount = 0;   
       let ImageUrl = 'https://techpur.com/wp-content/plugins/facebook-share-like-popup-viralplus/default.jpg'; 
-      let Slug = 'sample string 106';
+      let Slug = '';
 
       if(!this._isNew) {
         ReviewTitle = this._review.ReviewTitle;
@@ -109,11 +109,11 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
         ReviewStatus = this._review.ReviewStatus; 
         CreatedDate = this._review.CreatedDate.toUTCString();
         LastEditedDate = this._review.LastEditedDate.toUTCString();
-        UserId = this._review.UserId;
+        UserId = this.UserInfo.user_id;
         Score = this._review.Score;
         RateCount = this._review.RateCount;
         ImageUrl = this._review.Image;
-        Slug = this._slug.getSlug(this._review.Slug);
+        Slug = this._slug.getSlug(ReviewTitle);
       }
   this.reviewForm = this._formBuilder.group({
     ReviewTitle: [ReviewTitle],

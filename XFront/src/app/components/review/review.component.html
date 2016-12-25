@@ -24,7 +24,7 @@
             <div class="card-review-info">
                 <h1><a routerLink="{{review.Slug}}">{{review.ReviewTitle}}</a></h1>
                 <span>
-                    <a routerLink="{{review.Slug}}"> {{review.UserId}}</a> | {{review.RateCount}}
+                    <app-star [score]="review.Score" [rateCount]="review.RateCount"></app-star>
                 </span>
             </div>
         </div>

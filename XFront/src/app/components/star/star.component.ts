@@ -8,13 +8,19 @@ export class StarComponent implements OnChanges {
     @Input() rateCount: number;
     star:any[];
     starBorder:any[];
+    numberStar:number;
   constructor() { }
     ngOnChanges(): void {
-        let numberStar = Math.round(this.score / this.rateCount);
-        if(numberStar>5){
-            numberStar = 5;
+        if(this.rateCount !=0){
+            this.numberStar = Math.round(this.score / this.rateCount);
         }
-        this.star = Array(numberStar).fill(1);
-        this.starBorder = Array(5 - numberStar).fill(0);
+        else {
+            this.numberStar = 0;
+        }
+        if(this.numberStar>5){
+            this.numberStar = 5;
+        }
+        this.star = Array(this.numberStar).fill(1);
+        this.starBorder = Array(5 - this.numberStar).fill(0);
     }  
 }

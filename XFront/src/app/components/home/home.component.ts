@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
   
   onScrollDown () {
     if(this.dataStatus == true){
-      console.log(this.start);
       this.start = this.start + this.sum;
       this.getStoryList(this.start);
     }
