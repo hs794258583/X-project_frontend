@@ -33,6 +33,12 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
 
 
   ngOnInit() {
+    //remove class in html, body
+    let html = document.getElementsByTagName("html");
+    let body = document.getElementsByTagName("body");
+    body[0].removeAttribute("class");
+    html[0].removeAttribute("class");
+
      this._subscription = this._route.params.subscribe(  
       (params: any) =>  {        
         if (params.hasOwnProperty('ReviewId')) {

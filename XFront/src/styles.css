@@ -89,6 +89,51 @@ nav .tab-menu {
     float: left;
     margin-top: 8px;
 }
+nav #tab-back {
+    width: 20%;
+    float: left;
+    margin-top: 8px;
+    color: #fff;
+}
+nav #tab-back {
+    text-align: center;
+}
+nav #tab-large {
+    width: 20%;
+    float: left;
+    margin-top: 8px;
+    color: #fff;
+}
+nav #tab-large {
+    text-align: center;
+}
+nav #tab-bold {
+    width: 20%;
+    float: left;
+    margin-top: 8px;
+    color: #fff;
+}
+nav #tab-bold {
+    text-align: center;
+}
+nav #tab-darkUi {
+    width: 20%;
+    float: left;
+    margin-top: 8px;
+    color: #fff;
+}
+nav #tab-darkUi {
+    text-align: center;
+}
+nav #tab-autoUi {
+    width: 20%;
+    float: left;
+    margin-top: 8px;
+    color: #fff;
+}
+nav #tab-autoUi {
+    text-align: center;
+}
 
 footer {
     clear: both;
@@ -532,4 +577,30 @@ footer {
 .star {
     font-size: 0.5rem;
     color: #ffd600;
+}
+
+.boldFont * {
+    font-weight: bold;
+}
+.setDarkUi {
+    background-color: #263238;
+    color: #eceff1;
+}
+.setDarkUi * {
+    background-color: #263238;
+}
+.setAutoUi1 {
+    background-color: #ff8f00 ;
+    color: #6d4c41;
+}
+.setAutoUi2 {
+    background-color: #ffb74d;
+    color: #6d4c41;
+}
+.setAutoUi3 {
+    background-color: #fff3e0;
+    color: #6d4c41;
+}
+.selectUi * {
+    color: #ff0;
 }

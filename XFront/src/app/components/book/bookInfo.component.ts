@@ -32,6 +32,12 @@ export class BookInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //remove class in html, body
+    let html = document.getElementsByTagName("html");
+    let body = document.getElementsByTagName("body");
+    body[0].removeAttribute("class");
+    html[0].removeAttribute("class");
+    //sub params
     this.sub = this._route.params.subscribe(params => {
       this.slug = params['slug'];
       this.getBookInfo(this.slug);

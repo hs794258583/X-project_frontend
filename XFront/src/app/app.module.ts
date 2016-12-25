@@ -26,11 +26,8 @@ import { ReviewDetailComponent } from './components/review/reviewDetail.componen
 import { ReviewService } from './components/review/review.service';
 import { Ng2UploaderModule } from 'ng2-uploader';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
-<<<<<<< Updated upstream
 import { StarComponent } from './components/star/star.component';
-=======
 import { BookService } from './components/book/book.service';
->>>>>>> Stashed changes
 
 
 @NgModule({
