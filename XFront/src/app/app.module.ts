@@ -26,6 +26,7 @@ import { ReviewDetailComponent } from './components/review/reviewDetail.componen
 import { ReviewService } from './components/review/review.service';
 import { Ng2UploaderModule } from 'ng2-uploader';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
+
 import { StarComponent } from './components/star/star.component';
 import { BookService } from './components/book/book.service';
 
@@ -58,7 +59,7 @@ import { BookService } from './components/book/book.service';
      Ng2UploaderModule
      
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}, appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService, BookService],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

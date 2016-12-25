@@ -8,8 +8,19 @@
 </div>
 
 <div class="create-item" *ngIf="_auth.authenticated()">
+
   <a class="create-review" [routerLink]="['them-moi']"><i class="large material-icons">create</i></a>
 </div>
+
+<div>
+  <a class="create-review" [routerLink]="['them-moi']"><i class="large material-icons">create</i></a>
+</div>
+<div>
+  <a class="create-review" routerLink="/thao-luan/them-moi"><i class="large material-icons">create</i></a>
+</div>
+
+
+
 
 <div class="results"
     infinite-scroll

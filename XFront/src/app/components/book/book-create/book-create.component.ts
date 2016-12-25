@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { Story } from '../../../model/story.model';
+import { Chapters } from '../../../model/chapters.model';
 
 @Component({
   selector: 'app-book-create',
@@ -62,6 +63,31 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     this._subscription.unsubscribe();
   }
 
+// Init Genres
+  initGenres(){
+    return this._formBuilder.group({
+      GenreId: [1],
+      GenreName: ['Trinh tham'],
+      GenreStatus: [3],
+      Slug: "trinh tham"
+    })
+  }
+
+// Init Chapters
+initChapters() {
+  return this._formBuilder.group({
+      ChapterId: [1],
+      StoryId: [2],
+      ChapterNumber: [3],
+      ChapterTitle: ["sample string 4"],
+  })
+}
+// initAuthors() {
+//   return this._formBuilder.group({
+    
+//   })
+// }
+
 // Initialize form
   private initForm() {
       
@@ -73,16 +99,8 @@ export class BookCreateComponent implements OnInit, OnDestroy {
      "AuthorId": 1,
      "AuthorName": "Lomonoxov",
      "AuthorStatus": 3,
-     "Slug": "Lo mon no xov",
+     "Slug": "Lo mo no xov",
    };
-   let Genres = [
-     {
-       "GenreId": 1,
-      "GenreName": "Trinh Tham",
-      "GenreStatus": 3,
-      "Slug": "trinh tham",
-     }
-   ]
    let CreatedDate = new Date().toUTCString();
    let LastEditedDate = new Date().toUTCString();
    let UserId = '9';
@@ -90,20 +108,15 @@ export class BookCreateComponent implements OnInit, OnDestroy {
    let RateCount = 0;
    let Image = 'https://techpur.com/wp-content/plugins/facebook-share-like-popup-viralplus/default.jpg';
    let Slug = 'sample string 106';
-   let Chapters = [{
-      "ChapterId": 1,
-      "StoryId": 2,
-      "ChapterNumber": 3,
-      "ChapterTitle": "sample string 4",
-   }];
+
 
    if(!this._isNew) {
       StoryName = this._book.StoryName;
       StoryProgress = this._book.StoryProgress;
       StoryDescription = this._book.StoryDescription;
       StoryStatus = this._book.StoryStatus;
-      Author = this._book.Author;
-      Genres = this._book.Genres;
+     
+
       CreatedDate = this._book.CreatedDate.toUTCString();
       LastEditedDate = this._book.LastEditedDate.toUTCString();
       UserId = this._book.UserId;
@@ -111,7 +124,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
       RateCount = this._book.RateCount;
       Image = this._book.Image;
       Slug = this._book.Slug;
-      Chapters = this._book.Chapters;
+
    }
 
    //Book FormBuiler
@@ -120,16 +133,39 @@ export class BookCreateComponent implements OnInit, OnDestroy {
       StoryProgress : [StoryProgress],
       StoryDescription : [StoryDescription],
       StoryStatus : [StoryStatus],
-      Author : [Author],
-      Genres : [Genres],
-      CreatedDate : [CreatedDate],
-      LastEditedDate : [LastEditedDate],
+      CreatedDate: [CreatedDate],
+      LastEditedDate: [LastEditedDate],
       UserId : [UserId],
       Score : [Score],
       RateCount : [RateCount],
       Image : [Image],
       Slug : [Slug],
-      Chapters : [Chapters],
+      Author: this._formBuilder.group({
+          AuthorId:[Author.AuthorId],
+          AuthorName: [Author.AuthorName],
+          AuthorStatus: [Author.AuthorStatus],
+          Slug: [Author.Slug]
+      }),    
+      Genres: this._formBuilder.array([
+         this.initGenres()          
+      ]),
+      Chapters: this._formBuilder.array([
+          this.initChapters()
+      ])  
    });
+   
+this.addGenres();
+this.addChapters();
   }
+addGenres(){
+    const control = <FormArray>this.bookForm.controls['Genres'];
+    control.push(this.initGenres());
+  }
+
+  
+addChapters(){
+  const control = <FormArray>this.bookForm.controls['Chapters'];
+  control.push(this.initChapters());
+}
+
 }

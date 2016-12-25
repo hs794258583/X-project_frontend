@@ -1,4 +1,4 @@
- <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+ <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" >
       <div class="row">
         <div class="col-lg-12">
           <button type="submit" class="btn btn-success">Save</button>
@@ -6,23 +6,28 @@
         </div>
       </div>
 
-      <div class="row">
+       <!--THE STORY -->
+
+<fieldset>
+    <legend>Thêm truyện</legend>
+    <!--Story Name -->
+     <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
-            <label for="ReviewTitle">Tên Sách</label>
+            <label for="StoryName">Tên Truyện</label>
             <input
               type="text"
-              id="ReviewTitle"
+              id="StoryName"
               class="form-control"
-              formControlName="ReviewTitle">
+              formControlName="StoryName">
           </div>
         </div>
       </div>
-
+<!--Story Image -->
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
-            <label for="Image">Image Url</label>
+            <label for="Image">Hình cho sách</label>
             <input
               type="text"
               id="Image"
@@ -33,8 +38,6 @@
         </div>
       </div>
 
-
-
       <div class="row">
         <div class="col-lg-12">
           <div class="img">
@@ -43,20 +46,80 @@
         </div>
       </div>
 
+<!--Story Description -->
       <div class="row">
         <div class="col-lg-12">
           <div class="form-group">
-            <label for="ReviewContent">Content</label>
+            <label for="StoryDescription">Mô tả Truyện </label>
             <textarea          
             rows="10" 
             cols="80"
-            id="ReviewContent"
+            id="StoryDescription"
             class="form-control"
-            formControlName="ReviewContent"></textarea>
+            formControlName="StoryDescription"></textarea>
           </div>
         </div>
       </div> 
-    </form>
+</fieldset>
+     
+
+           <!--THE AUTHOR -->
+   <fieldset>
+  <legend>Thêm tác giả</legend>
+
+      <div formGroupName="Author">
+        <!--Author Name -->
+      <label for="AuthorName">Ten tac gia</label>
+            <input
+              type="text"
+              id="AuthorName"
+              class="form-control"
+              formControlName="AuthorName">
+      </div>
+ 
+</fieldset>
+
+            <!--THE GENRE -->
+    <!--Genre Name -->
+    
+     <div formArrayName="Genres">
+             <div *ngFor="let genre of bookForm.controls.Genres.controls; let i=index">
+        <div [formGroupName]="i">
+                <label for="GenreName">Tên thể loại </label>
+            <input
+              type="text"
+              id="GenreName"
+              class="form-control"
+              formControlName="GenreName"> 
+        </div>
+  </div>
+    </div>
 
 
+            <!--THE CHAPTER -->
+<fieldset>
+  <legend>Thêm Chương</legend>      
+     <div formArrayName="Chapters">
+         <!--Chapter Number -->
+      <div *ngFor="let chapter of bookForm.controls.Chapters.controls; let i=index">
+          <div [formGroupName]="i">
+            <label for="ChapterNumber">Số chương</label>
+              <input
+                type="text"
+                id="ChapterNumber"
+                class="form-control"
+                formControlName="ChapterNumber"> 
+        <!-- Chapter Title-->     
+            <label for="ChapterTitle">Tên chương </label>
+            <input
+                type="text"
+                id="ChapterTitle"
+                class="form-control"
+                formControlName="ChapterTitle"> 
+          </div>
+  </div>
+    </div>
+</fieldset>
 
+
+   </form>
