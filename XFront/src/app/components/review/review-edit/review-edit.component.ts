@@ -34,6 +34,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     //remove class in html, body
+    //let ck = window['CKEDITOR']['replace']( 'ReviewContent' );
     let html = document.getElementsByTagName("html");
     let body = document.getElementsByTagName("body");
     body[0].removeAttribute("class");
