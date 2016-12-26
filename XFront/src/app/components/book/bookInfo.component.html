@@ -5,7 +5,12 @@ Author: Linh Ho
     <img [src]="book.Image" alt="{{book.StoryName}}">
     <h1>{{book.StoryName}}</h1>
     <div class="info">
-        <a routerLink=""></a>
+        <div><app-star [score]="book.Score" [rateCount]="book.RateCount"></app-star></div>
+        <div><a routerLink="/tac-gia/{{book.Author.Slug}}">Tác giả: {{book.Author.AuthorName}}</a></div>
+        <div>
+            <span class="bookStatus" *ngIf="book.StoryProgress == 1">Truyện đã hoàn thành</span>
+            <span class="bookStatus" *ngIf="book.StoryProgress == 0">Truyện chưa hoàn thành</span>
+        </div>
     </div>
     <!--<div class="download-ebook">
         <a href="#!">Download Ebook</a>

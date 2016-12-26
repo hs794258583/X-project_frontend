@@ -385,6 +385,13 @@ footer {
 .book-info h1 {
     text-align: center;
 }
+.book-info .info div {
+    text-align: center;
+}
+.book-info .info .bookStatus {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 .book-info .download-ebook {
     text-align: center;
 }
@@ -439,6 +446,8 @@ footer {
 /* chap*/
 .chap {
     margin-bottom: 30px;
+    max-width: 960px;
+    margin:auto;
 }
 .chap h1, .chap h2 {
     text-align: center;

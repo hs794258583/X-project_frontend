@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
   throttle:number = 300;
   scrollDistance:number = 1;
   dataStatus:boolean = true;
-  
+  bookSearch:string;
+  searchNull:boolean = false;
+  searchStatus:boolean = false;
   constructor(
     private _auth: AuthService,
     private _api: ApiService
@@ -59,4 +61,31 @@ export class HomeComponent implements OnInit {
       this.getStoryList(this.start);
     }
   }
+  search(){
+    if(this.bookSearch !=""){
+      this.searchStatus = true;
+      this._api.getApi("http://api.xtale.net/api/Stories/search/"+this.bookSearch+"/1/100")
+                .subscribe(data =>{
+                  this.stories = data;
+                  if(data.length<1){
+                    this.searchNull = true;
+                  }
+                },
+                           error => this.searchNull = true);
+    }
+  }
+  checkClearSearch(){
+    if(this.bookSearch ==""){
+      this.clearSearch();
+    }
+  }
+  clearSearch(){
+    this.searchNull = false;
+    this.bookSearch = "";
+    this.stories = [];
+    this.start = 1;
+    this.searchStatus = false;
+    this.getStoryList(this.start);
+  }
+
 }

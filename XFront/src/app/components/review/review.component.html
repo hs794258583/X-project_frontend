@@ -3,8 +3,9 @@
     <h1>Thảo luận</h1>
 </div>
 <div class="search-form">
-    <input type="text" placeholder="Tìm kiếm...">
-    <a href="#!"><i class="material-icons">search</i></a>
+    <input type="text" placeholder="Tìm kiếm..." [(ngModel)]="reviewSearch" (keydown.enter)="search()" (ngModelChange)="checkClearSearch()">
+    <a (click)="search()" *ngIf="!searchStatus"><i class="material-icons">search</i></a>
+    <a (click)="clearSearch()" *ngIf="searchStatus"><i class="material-icons">clear</i></a>
 </div>
 
 <div class="create-item" *ngIf="_auth.authenticated()">
