@@ -7,7 +7,7 @@
         <button class="edit" (click)="editReview(); $event.stopPropagation()">Edit</button>
         <div>
             <h1 class="title"><a routerLink="{{review?.Slug}}">{{review.ReviewTitle}}</a></h1>
-            <span class="info">Linh HO</span>
+            <span class="info">{{review?.CreatedDate | date: "dd-MM-yyyy"}}</span>
             <span [innerHTML]="review?.ReviewContent"></span>
         </div>
     </div>

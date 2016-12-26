@@ -46,7 +46,7 @@ export class ChapComponent implements OnInit {
         this.setDarkUi();
         this.setAutoUi();
     });
-    Observable.interval(1000 * 15 * 60).subscribe(x => {
+    Observable.interval(1000 * 30 * 60).subscribe(x => {
       this.setAutoUi();
     });
   }

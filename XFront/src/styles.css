@@ -604,3 +604,46 @@ footer {
 .selectUi * {
     color: #ff0;
 }
+
+/* Style of form input*/
+.form-input {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.form-group {
+    margin: 20px 10px;
+}
+input {
+    width: 100%;
+    height: 33px;
+    font-size: 18px;
+    border: 1px solid #f44336;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #424242;
+}
+input:focus {
+    border: 2px solid #f44336;
+    outline: none;
+}
+.form-input img {
+    max-width: 500px;
+    display: block;
+    margin:auto;
+    width: 100%;
+}
+.form-input .action {
+    text-align: center;
+}
+button {
+    padding: 10px 20px;
+    background-color: #f44336;
+    border: none;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin:auto;
+}
