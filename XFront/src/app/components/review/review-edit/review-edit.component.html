@@ -3,14 +3,18 @@
     <input type="text" id="ReviewTitle" class="form-control" formControlName="ReviewTitle" placeholder="Tiêu đề">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" formControlName="Image" placeholder="Ảnh tiêu biểu" #imageUrl>
+    <input 
+        type="file" (change)="onChange($event)"
+        class="form-control" 
+        formControlName="Image" 
+        placeholder="Ảnh tiêu biểu"/>
   </div>
-  <div class="form-group">
-    <input type="file" name="pic" accept="image/*">
+
+ <div>
+    
   </div>
-  <div class="img">
-    <img [src]="imageUrl.value">
-  </div>
+
+
   <div class="form-group">
     <!--<textarea rows="10" cols="80" name="ReviewContent" id="ReviewContent" class="form-control" formControlName="ReviewContent">{{ReviewContent}}</textarea>-->
     <ckeditor

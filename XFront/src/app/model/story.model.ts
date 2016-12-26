@@ -14,9 +14,8 @@ export interface Story {
             "Score": number,
             "RateCount": number,
             "Image": string,
-            "Slug": string,
-            
+            "Slug": string,         
             "Author": Author,
-            "Genres":[Genre],
-             "Chapters": [ChapterStory]
+            "Genres":Genre[],
+            "Chapters": ChapterStory[]
 }

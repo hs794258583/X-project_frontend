@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Review } from '../../../model/review.model';
 import { Subscription } from 'rxjs/Rx';
@@ -8,6 +8,10 @@ import { SlugService } from '../../../services/slug.service';
 import { Ng2UploaderOptions } from 'ng2-uploader';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { NgUploaderOptions } from 'ngx-uploader';
+import { UploadService } from './upload.service';
+
+const uploadURL = 'http://api.xtale.net/api/FileUpload';
 
 @Component({
   selector: 'app-review-edit',
@@ -15,6 +19,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./review-edit.component.css'],
 })
 export class ReviewEditComponent implements OnInit, OnDestroy{
+  
   reviewForm: FormGroup;
   private _reviewIndex: number;
   private _review: any;
@@ -22,13 +27,18 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
   private _isNew = true;
   private _isDisplay = false;
   UserInfo:any = JSON.parse(localStorage.getItem('profile'));
+   picName: string;
   constructor(private _route: ActivatedRoute,
               private _reviewService: ReviewService,
               private _formBuilder: FormBuilder,
               private _router:Router,
               private _slug:SlugService,
-              private _http: Http) { 
-               
+              private _http: Http,
+              private _uploadService:UploadService) { 
+               this._uploadService.progress$.subscribe(
+                   data => {
+                    console.log('progress = '+data);
+                    });
               }
 
 
@@ -75,28 +85,63 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
     this._subscription.unsubscribe();
   }
 
- 
 
-// fileChange(event) {
-//     let fileList: FileList = event.target.files;
-//     if(fileList.length > 0){
-//       let file: File = fileList[0];
-//       let formData: FormData = new FormData();
-//       formData.append('uploadFile', file, file.name);
-//       let headers = new Headers();
-//       headers.append('Content-Type', 'multipart/form-data');
-//       headers.append('Accept', 'application/json');
-//       let options = new RequestOptions({headers: headers});
-//       this._http.post('http://api.xtale.net/api/reviews', formData, options)
-//                 .map(res => res.json())
-//                 .catch(error => Observable.throw(error))
-//                 .subscribe(
-//                   data => console.log('success'),
-//                   error => console.log(error)
-//                 )
+
+     onChange(event) {
+       console.log('onChange');
+         var files = event.srcElement.files;
+        console.log(files);
+           this._uploadService.makeFileRequest('http://api.xtale.net/api/FileUpload', [], files).subscribe(() => {
+        console.log('sent');
+        this.picName = files;
+     });
+     }
+// @ViewChild("fileInput") fileInput;
+//  addFile(): void {
+//     let fi = this.fileInput.nativeElement;
+//     if (fi.files && fi.files[0]) {
+//         let fileToUpload = fi.files[0];
+//         this.upload(fileToUpload)
+//             .subscribe(res => {
+//                 console.log(res);
+//             });
 //     }
 // }
+// upload(fileToUpload: any) {
+//     let input = new FormData();
+//     input.append("file", fileToUpload);
 
+//     return this._http
+//         .post("http://api.xtale.net/api/FileUpload", input);
+// }
+//Upload File
+// uploadFile: any;
+//   hasBaseDropZoneOver: boolean = false;
+//   options: NgUploaderOptions = {
+//     url: 'http://api.xtale.net/api/FileUpload',
+//     allowedExtensions: ['image/png', 'image/jpg'],
+//   };
+//   sizeLimit = 2000000;
+
+//   handleUpload(data): void {
+//     if (data && data.response) {
+//       data = JSON.parse(data.response);
+//       this.uploadFile = data;
+//     }
+//   }
+
+//   fileOverBase(e:any):void {
+//     this.hasBaseDropZoneOver = e;
+//   }
+
+//   beforeUpload(uploadingFile): void {
+//     if (uploadingFile.size > this.sizeLimit) {
+//       uploadingFile.setAbort();
+//       alert('File is too large');
+//     }
+//   }
+
+// Init form
   private initForm() { 
       
       let ReviewTitle = '';
@@ -107,7 +152,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
       let UserId = this.UserInfo.user_id;
       let Score = 0;
       let RateCount = 0;   
-      let ImageUrl = 'https://techpur.com/wp-content/plugins/facebook-share-like-popup-viralplus/default.jpg'; 
+      let ImageUrl = ''; 
       let Slug = '';
 
       if(!this._isNew) {

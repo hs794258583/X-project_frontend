@@ -12,6 +12,8 @@ import { AuthorComponent } from './components/author/author.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 import { ReviewDetailComponent } from './components/review/reviewDetail.component';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
+import { ChapCreateComponent } from './components/book/chap-create/chap-create.component';
+import { ChapEditComponent } from './components/book/chap-edit/chap-edit.component';
 
 const appRoutes: Routes = [
     {
@@ -46,6 +48,19 @@ const appRoutes: Routes = [
         path: 'chuyen-muc/:slug',
         component: GenreComponent 
     },
+    // **Chapter Routing Section
+    {
+        path:'sach/:id/them-chap',
+        component: ChapCreateComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path:'sach/:id/:chapnumber/sua-chap',
+        component: ChapEditComponent,
+        canActivate: [AuthGuard]
+    },
+
+
     //** Book Routing Section
       {  
         path: 'sach/themsach',
@@ -67,6 +82,8 @@ const appRoutes: Routes = [
         path: 'tac-gia/:slug',
         component: AuthorComponent 
     },
+
+    
     {
         path: 'profile',
         component: ProfileComponent,

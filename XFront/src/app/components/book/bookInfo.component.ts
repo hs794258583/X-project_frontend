@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Story } from '../../model/story.model';
+import { BookService } from './book.service';
+
+
 AuthService
 
 @Component({
@@ -18,7 +22,7 @@ export class BookInfoComponent implements OnInit {
   listChap:any[] = [];
   slug:string;
   sub: any;
-
+  books: Story[] = [];
   sum:number = 10;
   start:number = 1;
   throttle:number = 300;
@@ -28,7 +32,8 @@ export class BookInfoComponent implements OnInit {
     private _auth: AuthService,
     private _api: ApiService,
     private _route: ActivatedRoute,
-    private _router: Router 
+    private _router: Router,
+    private _bookService: BookService
   ) { }
 
   ngOnInit() {
@@ -72,6 +77,13 @@ export class BookInfoComponent implements OnInit {
         this.start = this.start + this.sum;
         this.getListChap(this.start,this.slug);
       }
+    }
+
+    //Delete Book
+    deleteBook(book: Story) {
+     this._bookService.removeBook(book.StoryId)
+                       .subscribe(data => this.books = data);
+                       this._bookService.navigateBack();
     }
 
 }

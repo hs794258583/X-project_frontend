@@ -29,7 +29,11 @@ import { BookCreateComponent } from './components/book/book-create/book-create.c
 
 import { StarComponent } from './components/star/star.component';
 import { BookService } from './components/book/book.service';
-
+import { ChapCreateComponent } from './components/book/chap-create/chap-create.component';
+import { ChapEditComponent } from './components/book/chap-edit/chap-edit.component';
+import { ChapService } from './components/book/chap-create/chap.service';
+import { NgUploaderModule } from 'ngx-uploader';
+import { UploadService } from './components/review/review-edit/upload.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,9 @@ import { BookService } from './components/book/book.service';
     ReviewComponent,
     ReviewDetailComponent,
     BookCreateComponent,
-    StarComponent
+    StarComponent,  
+    ChapCreateComponent,
+    ChapEditComponent
   ],
   imports: [
     BrowserModule,
@@ -56,10 +62,11 @@ import { BookService } from './components/book/book.service';
     ReactiveFormsModule,
     InfiniteScrollModule,
     CKEditorModule,
-     Ng2UploaderModule
+    NgUploaderModule,
      
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService, BookService],
+  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
+   ApiService, SlugService, ReviewService, BookService, ChapService, UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

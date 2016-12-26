@@ -1,46 +1,72 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+//Author: Duy Khanh
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, } from '@angular/core';
 import { FormArray, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BookService } from '../book.service';
 import { SlugService } from '../../../services/slug.service';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription, Observable } from 'rxjs/Rx';
 import { Story } from '../../../model/story.model';
 import { Chapters } from '../../../model/chapters.model';
+import { Author } from '../../../model/author.model';
+import { ApiService } from '../../../services/api.service';
+import { Genre } from '../../../model/genre.model';
 
 @Component({
   selector: 'app-book-create',
   templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.css']
+  styleUrls: ['./book-create.component.css'],
+  
 })
 export class BookCreateComponent implements OnInit, OnDestroy {
+
+
+   authors: Author[] = [];
+   genres: Genre[] = [];
    bookForm: FormGroup;
+   Id: number;
+   genreId: number;
    private _bookIndex: number;
    private _book: Story;
    private _subscription: Subscription;
    private _isNew = true;
-   private _isDisplay = false;
+   userInfo: any = JSON.parse(localStorage.getItem('profile'));
   constructor(private _bookService: BookService,
               private _slug: SlugService,
               private _http: Http,
               private _formBuilder: FormBuilder,
               private _router: Router,
-              private _route: ActivatedRoute) { }
+              private _route: ActivatedRoute,
+              private _api: ApiService) { }
 
   ngOnInit() {
-    this._subscription = this._route.params.subscribe(
-      (params: any) => {
-        if(params.hasOwnProperty('StoryId')){
-          this._isNew = false;
-          this._bookIndex =  +params['StoryId'];
-          this._book = this._bookService.getBook(this._bookIndex);
-        } else {
-          this._isNew = true;
-          this._book = null;
-        }
-        this.initForm();
-      }
-    )
+    // this._subscription = this._route.params.subscribe(
+    //   (params: any) => {
+    //     if(params.hasOwnProperty('StoryId')){
+    //       this._isNew = false;
+    //       this._bookIndex =  +params['StoryId'];
+    //       this._book = this._bookService.getBook(this._bookIndex);
+    //     } else {
+    //       this._isNew = true;
+    //       this._book = null;
+    //     }
+        
+    //   }
+    // )
+    this.initForm();
+
+//Init Author and Genre for Dropdown
+    this._subscription = this._route.params.subscribe(params => {
+      this.Id = params['Id'];
+      this.getAuthor();
+      console.log(this.Id);
+    })
+    
+    this._subscription = this._route.params.subscribe(params => {
+      this.genreId = params['Id'];
+      this.getGenre();
+      console.log(this.genreId);
+    })
   }
 
 // Submit form
@@ -52,24 +78,28 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         this._bookService.updateBook(this._book);
       }
       console.log(newBook);
-      this._bookService.navigateBack();
   }
 
-  onCancel(){
-      this._bookService.navigateBack();
-  }
+ 
 
-  ngOnDestroy(){
-    this._subscription.unsubscribe();
-  }
+getAuthor() {
+  return this._api.getApi("http://api.xtale.net/api/authors/")
+                    .subscribe(data => this.authors = data,
+                     error => this.authors = <any>error);
+}
+getGenre(){
+  return this._api.getApi("http://api.xtale.net/api/genres")
+                  .subscribe(data => this.genres = data,
+                  error => this.authors = <any>error)
+}
 
 // Init Genres
   initGenres(){
     return this._formBuilder.group({
       GenreId: [1],
-      GenreName: ['Trinh tham'],
+      GenreName: [''],
       GenreStatus: [3],
-      Slug: "trinh tham"
+      Slug: ['']
     })
   }
 
@@ -79,14 +109,9 @@ initChapters() {
       ChapterId: [1],
       StoryId: [2],
       ChapterNumber: [3],
-      ChapterTitle: ["sample string 4"],
+      ChapterTitle: [''],
   })
 }
-// initAuthors() {
-//   return this._formBuilder.group({
-    
-//   })
-// }
 
 // Initialize form
   private initForm() {
@@ -95,36 +120,27 @@ initChapters() {
    let StoryProgress = 4;
    let StoryDescription = '';
    let StoryStatus = 1;
-   let Author = {
-     "AuthorId": 1,
-     "AuthorName": "Lomonoxov",
-     "AuthorStatus": 3,
-     "Slug": "Lo mo no xov",
-   };
    let CreatedDate = new Date().toUTCString();
    let LastEditedDate = new Date().toUTCString();
-   let UserId = '9';
+   let UserId = this.userInfo.user_id;
    let Score = 0;
    let RateCount = 0;
    let Image = 'https://techpur.com/wp-content/plugins/facebook-share-like-popup-viralplus/default.jpg';
-   let Slug = 'sample string 106';
+   let Slug = '';
 
 
    if(!this._isNew) {
       StoryName = this._book.StoryName;
       StoryProgress = this._book.StoryProgress;
       StoryDescription = this._book.StoryDescription;
-      StoryStatus = this._book.StoryStatus;
-     
-
+      StoryStatus = this._book.StoryStatus;  
       CreatedDate = this._book.CreatedDate.toUTCString();
       LastEditedDate = this._book.LastEditedDate.toUTCString();
-      UserId = this._book.UserId;
+      UserId = UserId;
       Score = this._book.Score;
       RateCount = this._book.RateCount;
       Image = this._book.Image;
       Slug = this._book.Slug;
-
    }
 
    //Book FormBuiler
@@ -139,33 +155,23 @@ initChapters() {
       Score : [Score],
       RateCount : [RateCount],
       Image : [Image],
-      Slug : [Slug],
-      Author: this._formBuilder.group({
-          AuthorId:[Author.AuthorId],
-          AuthorName: [Author.AuthorName],
-          AuthorStatus: [Author.AuthorStatus],
-          Slug: [Author.Slug]
-      }),    
+      Slug : [StoryName],
+      
+      Author: [''],
       Genres: this._formBuilder.array([
-         this.initGenres()          
+        this.initGenres()
       ]),
       Chapters: this._formBuilder.array([
           this.initChapters()
       ])  
    });
-   
-this.addGenres();
-this.addChapters();
-  }
-addGenres(){
-    const control = <FormArray>this.bookForm.controls['Genres'];
-    control.push(this.initGenres());
   }
 
-  
-addChapters(){
-  const control = <FormArray>this.bookForm.controls['Chapters'];
-  control.push(this.initChapters());
-}
+ onCancel(){
+      this._bookService.navigateBack();
+  }
 
+  ngOnDestroy(){
+    this._subscription.unsubscribe();
+  }
 }

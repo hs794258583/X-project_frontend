@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
     private _auth: AuthService,
     private _api: ApiService
   ) {
-    
   }
 
   ngOnInit() {
