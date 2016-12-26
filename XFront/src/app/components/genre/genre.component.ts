@@ -24,6 +24,7 @@ export class GenreComponent implements OnInit {
   scrollDistance = 1;
   sub:any;
   param:string;
+  dataStatus:boolean = true;
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
@@ -33,6 +34,7 @@ export class GenreComponent implements OnInit {
 
   ngOnInit() {
      this.sub = this._route.params.subscribe(params => {
+      this.stories = [];
       this.getStoryList(this.start, params['slug']);
       this.param = params['slug'];
     });
@@ -41,14 +43,23 @@ export class GenreComponent implements OnInit {
   getStoryList(start:number, param:string){
      // Author: Linh Ho
      let end = start + this.sum - 1;
-      this._api.getApi("http://api.xtale.net/api/Stories/genre/"+param)
+      this._api.getApi("http://api.xtale.net/api/Stories/genre/"+param+"/"+start+"/"+end)
                 .subscribe(data => this.stories = this.stories.concat(data),
-                           error => this.stories = <any>error);
+                           error => this.dataStatus == false);
+      this._api.getApi("http://api.xtale.net/api/Stories/genre/"+param+"/"+start+this.sum+"/"+end+this.sum)
+                .subscribe(data =>{
+                    if(data.length<1){
+                      this.dataStatus = false;
+                    }
+                },
+                           error => this.dataStatus == false);
   }
   
   onScrollDown () {
-    this.start = this.start + this.sum;
-    this.getStoryList(this.start, this.param);
+    if(this.dataStatus == true){
+      this.start = this.start + this.sum;
+      this.getStoryList(this.start, this.param);
+    }
   }
 
 }

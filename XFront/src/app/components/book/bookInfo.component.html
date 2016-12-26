@@ -4,10 +4,13 @@ Author: Linh Ho
 <div class="book-info" *ngFor="let book of bookInfo">
     <img [src]="book.Image" alt="{{book.StoryName}}">
     <h1>{{book.StoryName}}</h1>
-    <div class="download-ebook">
+    <div class="info">
+        <a routerLink=""></a>
+    </div>
+    <!--<div class="download-ebook">
         <a href="#!">Download Ebook</a>
         <a href="#!">Download PDF</a>
-    </div>
+    </div>-->
     <div [innerHTML]="book.StoryDescription"></div>
 </div>
 <div class="list-chap">
