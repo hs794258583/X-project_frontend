@@ -42,10 +42,8 @@ export class ReviewComponent implements OnInit {
     let body = document.getElementsByTagName("body");
     body[0].removeAttribute("class");
     html[0].removeAttribute("class");
-
     this.getStoryList(this.start);
   }
-
   getStoryList(start:number){
      // Author: Linh Ho
      let end:number = start + this.sum - 1;
@@ -53,14 +51,12 @@ export class ReviewComponent implements OnInit {
                 .subscribe(data => this.reviews = this.reviews.concat(data),
                            error => this.dataStatus = false);
   }
-  
   onScrollDown() {
     if(this.dataStatus == true){
       this.start = this.start + this.sum;
       this.getStoryList(this.start);
     }
   }
-
   search(){
     if(this.reviewSearch !=""){
       this.searchStatus = true;

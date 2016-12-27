@@ -20,8 +20,9 @@ Author: Linh Ho
 </div>
 <div class="list-chap">
     <div class="search-form search-chap">
-        <input type="text" placeholder="Tìm kiếm chap...">
-        <a href="#!"><i class="material-icons">search</i></a>
+        <input type="text" placeholder="Tìm kiếm..." [(ngModel)]="chapSearch" (keydown.enter)="search()" (ngModelChange)="checkClearSearch()">
+        <a (click)="search()" *ngIf="!searchStatus"><i class="material-icons">search</i></a>
+        <a (click)="clearSearch()" *ngIf="searchStatus"><i class="material-icons">clear</i></a>
     </div>
     <ul
         infinite-scroll
