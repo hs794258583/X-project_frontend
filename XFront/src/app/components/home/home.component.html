@@ -5,8 +5,9 @@ Author: Linh Ho
     <img src="assets/images/logo.png" alt="Story">
 </div>
 <div class="search-form">
-    <input type="text" placeholder="Tìm kiếm...">
-    <a href="#!"><i class="material-icons">search</i></a>
+    <input type="text" placeholder="Tìm kiếm..." [(ngModel)]="bookSearch" (keydown.enter)="search()" (ngModelChange)="checkClearSearch()">
+    <a routerLink="" (click)="search()" *ngIf="!searchStatus"><i class="material-icons">search</i></a>
+    <a routerLink="" (click)="clearSearch()" *ngIf="searchStatus"><i class="material-icons">clear</i></a>
 </div>
 <div class="create-item" *ngIf="_auth.authenticated()">
   <a class="create-book" routerLink="/sach/themsach"><i class="large material-icons">note_add</i></a>

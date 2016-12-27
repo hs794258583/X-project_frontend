@@ -10,5 +10,8 @@
             <span class="info">{{review?.CreatedDate | date: "dd-MM-yyyy"}}</span>
             <span [innerHTML]="review?.ReviewContent"></span>
         </div>
+        <div>
+            <app-facebookComment [router]="thao-luan" [param]="review.Slug"></app-facebookComment>
+        </div>
     </div>
 </template> 

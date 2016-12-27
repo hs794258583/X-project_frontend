@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { ApiService } from '../../services/api.service';
-import { SlugService } from '../../services/slug.service';
-import { Story } from '../../model/story.model';
+import { AuthService } from '../../../services/auth.service';
+import { ApiService } from '../../../services/api.service';
+import { SlugService } from '../../../services/slug.service';
+import { Story } from '../../../model/story.model';
+import { Router } from '@angular/router';
 AuthService
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-storyManage',
   styles: [`
     .results {
       height: 100%;
-      overflow: scroll;
     }
   `],
-  templateUrl: './home.component.html'
+  templateUrl: './storyManage.component.html'
 })
-export class HomeComponent implements OnInit {
+export class StoryManageComponent implements OnInit {
   stories:Story[] = [];
-  sum:number = 10;
+  sum:number = 50;
   start:number = 1;
   throttle:number = 300;
   scrollDistance:number = 1;
@@ -25,10 +25,17 @@ export class HomeComponent implements OnInit {
   bookSearch:string;
   searchNull:boolean = false;
   searchStatus:boolean = false;
+  profile:any;
   constructor(
     private _auth: AuthService,
-    private _api: ApiService
-  ) { }
+    private _api: ApiService,
+    private _router: Router
+  ) { 
+    this.profile = JSON.parse(localStorage.getItem('profile'));
+    if(this.profile.roles[0] != 'admin' && this.profile.roles[0] != 'mod'){
+      this._router.navigateByUrl("/profile");
+    }
+  }
 
   ngOnInit() {
     //remove class in html, body
@@ -87,5 +94,4 @@ export class HomeComponent implements OnInit {
     this.searchStatus = false;
     this.getStoryList(this.start);
   }
-
 }

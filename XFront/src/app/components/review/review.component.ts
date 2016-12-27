@@ -28,6 +28,9 @@ export class ReviewComponent implements OnInit {
   scrollDistance:number = 1;
   dataStatus:boolean = true;
 
+  reviewSearch:string;
+  searchNull:boolean = false;
+  searchStatus:boolean = false;
   constructor(
     private _auth: AuthService,
     private _api: ApiService
@@ -39,10 +42,8 @@ export class ReviewComponent implements OnInit {
     let body = document.getElementsByTagName("body");
     body[0].removeAttribute("class");
     html[0].removeAttribute("class");
-
     this.getStoryList(this.start);
   }
-
   getStoryList(start:number){
      // Author: Linh Ho
      let end:number = start + this.sum - 1;
@@ -50,12 +51,37 @@ export class ReviewComponent implements OnInit {
                 .subscribe(data => this.reviews = this.reviews.concat(data),
                            error => this.dataStatus = false);
   }
-  
   onScrollDown() {
     if(this.dataStatus == true){
       this.start = this.start + this.sum;
       this.getStoryList(this.start);
     }
+  }
+  search(){
+    if(this.reviewSearch !=""){
+      this.searchStatus = true;
+      this._api.getApi("http://api.xtale.net/api/Reviews/search/"+this.reviewSearch+"/1/100")
+                .subscribe(data =>{
+                  this.reviews = data;
+                  if(data.length<1){
+                    this.searchNull = true;
+                  }
+                },
+                           error => this.searchNull = true);
+    }
+  }
+  checkClearSearch(){
+    if(this.reviewSearch ==""){
+      this.clearSearch();
+    }
+  }
+  clearSearch(){
+    this.searchNull = false;
+    this.reviewSearch = "";
+    this.reviews = [];
+    this.start = 1;
+    this.searchStatus = false;
+    this.getStoryList(this.start);
   }
 
 }

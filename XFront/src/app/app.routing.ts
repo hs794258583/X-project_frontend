@@ -12,8 +12,13 @@ import { AuthorComponent } from './components/author/author.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 import { ReviewDetailComponent } from './components/review/reviewDetail.component';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
+
 import { ChapCreateComponent } from './components/book/chap-create/chap-create.component';
 import { ChapEditComponent } from './components/book/chap-edit/chap-edit.component';
+
+import { StoryManageComponent } from './components/mod/storyManage/storyManage.component';
+import { StoryCensorshipComponent } from './components/mod/storyCensorship/storyCensorship.component';
+
 
 const appRoutes: Routes = [
     {
@@ -75,8 +80,18 @@ const appRoutes: Routes = [
         path: 'sach/:slug/:chap',
         component: ChapComponent 
     },
-    
-
+    // **End Book Routing Section
+    //** Manage Routing Section
+    {  
+        path: 'quan-ly/sach',
+        component: StoryManageComponent,
+        canActivate: [AuthGuard]
+    }, 
+    {  
+        path: 'quan-ly/sach/kiem-duyet',
+        component: StoryCensorshipComponent,
+        canActivate: [AuthGuard]
+    }, 
     // **End Book Routing Section
     {
         path: 'tac-gia/:slug',

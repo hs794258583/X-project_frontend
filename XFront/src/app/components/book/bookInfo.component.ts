@@ -22,12 +22,21 @@ export class BookInfoComponent implements OnInit {
   listChap:any[] = [];
   slug:string;
   sub: any;
+<<<<<<< HEAD
   books: Story[] = [];
   sum:number = 10;
+=======
+
+  sum:number = 20;
+>>>>>>> origin/master
   start:number = 1;
   throttle:number = 300;
   scrollDistance:number = 1;
   dataStatus:boolean = true;
+
+  chapSearch:string;
+  searchNull:boolean = false;
+  searchStatus:boolean = false;
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
@@ -50,34 +59,54 @@ export class BookInfoComponent implements OnInit {
     });
   }
   
-   getBookInfo(bookSlug:string){
-     // Author: Linh Ho
-      this._api.getApi("http://api.xtale.net/api/Stories/name/"+bookSlug)
-                .subscribe(data => this.bookInfo = data,
-                           error => this.bookInfo = <any>error);
+  getBookInfo(bookSlug:string){
+    // Author: Linh Ho
+    this._api.getApi("http://api.xtale.net/api/Stories/name/"+bookSlug)
+              .subscribe(data => this.bookInfo = data,
+                          error => this.bookInfo = <any>error);
+  }
+
+  getListChap(start:number,bookSlug:string){
+    // Author: Linh Ho
+    let end:number = start + this.sum - 1;
+    this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/"+start+"/"+end)
+              .subscribe(data => this.listChap = this.listChap.concat(data),
+                          error => this.listChap = <any>error);
+      // check Chapters
+      this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/"+(start+this.sum)+"/"+(end+this.sum))
+              .subscribe(data => {
+                if(data.length<1){
+                    this.dataStatus = false;
+                }
+              },
+                          error => this.listChap = <any>error);
+  }
+//scroll
+  onScrollDown () {
+    if(this.dataStatus == true){
+      this.start = this.start + this.sum;
+      this.getListChap(this.start,this.slug);
     }
-    getListChap(start:number,bookSlug:string){
-     // Author: Linh Ho
-     let end:number = start + this.sum - 1;
-      this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/"+start+"/"+end)
-                .subscribe(data => this.listChap = this.listChap.concat(data),
-                           error => this.listChap = <any>error);
-     // check Chapters
-     this._api.getApi("http://api.xtale.net/api/Chapters/range/"+bookSlug+"/"+(start+this.sum)+"/"+(end+this.sum))
-                .subscribe(data => {
+  }
+    //search chap
+  search(){
+    if(this.chapSearch !=""){
+      this.searchStatus = true;
+      this._api.getApi("http://api.xtale.net/api/Chapters/search/"+this.slug+"/"+this.chapSearch)
+                .subscribe(data =>{
+                  this.listChap = data;
                   if(data.length<1){
-                      this.dataStatus = false;
+                    this.searchNull = true;
                   }
                 },
-                           error => this.listChap = <any>error);
+                           error => this.searchNull = true);
     }
-
-    onScrollDown () {
-      if(this.dataStatus == true){
-        this.start = this.start + this.sum;
-        this.getListChap(this.start,this.slug);
-      }
+  }
+  checkClearSearch(){
+    if(this.chapSearch ==""){
+      this.clearSearch();
     }
+<<<<<<< HEAD
 
     //Delete Book
     deleteBook(book: Story) {
@@ -86,4 +115,15 @@ export class BookInfoComponent implements OnInit {
                        this._bookService.navigateBack();
     }
 
+=======
+  }
+  clearSearch(){
+    this.searchNull = false;
+    this.chapSearch = "";
+    this.listChap = [];
+    this.start = 1;
+    this.searchStatus = false;
+    this.getListChap(this.start,this.slug);
+  }
+>>>>>>> origin/master
 }

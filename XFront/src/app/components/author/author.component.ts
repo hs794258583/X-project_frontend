@@ -25,7 +25,7 @@ export class AuthorComponent implements OnInit {
   dataStatus:boolean = true;
   slug:string;
   sub:any;
-  
+  authorName:string;
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
@@ -37,10 +37,16 @@ export class AuthorComponent implements OnInit {
     this.sub = this._route.params.subscribe(params => {
       this.stories = [];
       this.getStoryList(this.start, params['slug']);
+      this.getAuthor(params['slug']);
       this.slug = params['slug'];
     });
   }
 
+   getAuthor(slug:string){
+    this._api.getApi("http://api.xtale.net/api/Authors/name/"+slug)
+                .subscribe(data => this.authorName = data[0].AuthorName);
+  }
+  
   getStoryList(start:number, params:string){
      // Author: Linh Ho
      let end:number = start + this.sum - 1;
