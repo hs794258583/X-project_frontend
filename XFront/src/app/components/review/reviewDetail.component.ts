@@ -67,4 +67,19 @@ export class ReviewDetailComponent implements OnInit {
   editReview() {
      this._router.navigate(['/thao-luan', this.reviewIndex, 'edit']);
   } 
+  //check user
+  checkUser(){
+    let user = JSON.parse(localStorage.getItem('profile'));
+    if(user !=""){
+      if(user.user_id == this.reviews[0].UserId || user.roles[0]== 'mod' || user.roles[0]== 'admin'){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else {
+      return false;
+    }
+  }
 }
