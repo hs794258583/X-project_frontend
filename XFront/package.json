@@ -26,6 +26,7 @@
     "auth0-lock": "^10.7.2",
     "core-js": "^2.4.1",
     "ng2-ckeditor": "^1.1.5",
+    "ng2-file-upload": "^1.1.4-2",
     "ng2-infinite-list": "^0.5.1",
     "ng2-uploader": "^2.0.0",
     "ngx-uploader": "^2.0.1",

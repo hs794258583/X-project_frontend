@@ -20,9 +20,11 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
   
   
   chapForm: FormGroup;
-  private _subscription: Subscription
+  private _subscription: Subscription;
   private _isNew = true;
   private _chap: Chapters;
+  private _chapIndex: number;
+
   userInfo: any = JSON.parse(localStorage.getItem('profile'));
   constructor(private _chapService: ChapService,          
               private _slug: SlugService,
@@ -31,6 +33,19 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
               private _route: ActivatedRoute) { }
 
   ngOnInit() {
+        this._subscription = this._route.params.subscribe(
+      (params: any) => {
+        if(params.hasOwnProperty('StoryId')){
+          this._isNew = false;
+          this._chapIndex =  +params['StoryId'];
+          this._chap = this._chapService.getChapter(this._chapIndex);
+        } else {
+          this._isNew = true;
+          this._chap = null;
+        }
+        
+      }
+    )
     this.initForm();
   }
   
@@ -41,11 +56,16 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
       } else {
         this._chapService.updateChap(this._chap);
       }
+      this._chapService.navigateBack()
       console.log(newChap);
   }
 
+  ngOnDestroy(){
+    this._subscription.unsubscribe();
+  }
+
   private initForm() {
-    let StoryId = 9;
+    let StoryId = 24;
     let ChapterNumber;
     let ChapterTitle = '';
     let ChapterContent = '';
@@ -65,10 +85,10 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
       LastEditedDate = this._chap.LastEditedDate.toUTCString();
       UserId = this._chap.UserId;
       Slug = this._chap.Slug;
-
+    }
       //Chap FormBuilder
       this.chapForm = this._formBuilder.group({
-           StoryId  : [StoryId],
+          StoryId: [StoryId],
           ChapterNumber : [ChapterNumber],
           ChapterTitle : [ChapterTitle],
           ChapterContent : [ChapterContent],
@@ -77,23 +97,13 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
           LastEditedDate : [LastEditedDate],
           UserId : [UserId],
           Slug : [Slug]
-      });
-     
-    }
+      }); 
+    
   }
-
-
-
 
 
   onCancel() {
     this._chapService.navigateBack();
   }
-  
-   ngOnDestroy(){
-    this._subscription.unsubscribe();
-  }
-
-
   
 }

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../review.service';
 import { SlugService } from '../../../services/slug.service';
 import { Ng2UploaderOptions } from 'ng2-uploader';
-import { Headers, Http, RequestOptions } from '@angular/http';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { NgUploaderOptions } from 'ngx-uploader';
 import { UploadService } from './upload.service';
@@ -21,11 +21,17 @@ const uploadURL = 'http://api.xtale.net/api/FileUpload';
 export class ReviewEditComponent implements OnInit, OnDestroy{
   
   reviewForm: FormGroup;
+ images: string[] = [];
+ filesToUpload: Array<File>;
+ imageName:string;
+
+
   private _reviewIndex: number;
-  private _review: any;
+  private _review: Review;
   private _subscription: Subscription;
   private _isNew = true;
   private _isDisplay = false;
+  private _errorMessage: string
   UserInfo:any = JSON.parse(localStorage.getItem('profile'));
    picName: string;
   constructor(private _route: ActivatedRoute,
@@ -35,10 +41,6 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
               private _slug:SlugService,
               private _http: Http,
               private _uploadService:UploadService) { 
-               this._uploadService.progress$.subscribe(
-                   data => {
-                    console.log('progress = '+data);
-                    });
               }
 
 
@@ -55,7 +57,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
         if (params.hasOwnProperty('ReviewId')) {
           this._isNew = false;
           this._reviewIndex = +params['ReviewId'];
-          this._review = this._reviewService.getReview(this._reviewIndex);
+          // this._review = this._reviewService.getReview(this._reviewIndex);
         } else {
           this._isNew = true;
           this._review = null;
@@ -85,64 +87,27 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
     this._subscription.unsubscribe();
   }
 
-
-
-     onChange(event) {
-       console.log('onChange');
-         var files = event.srcElement.files;
-        console.log(files);
-           this._uploadService.makeFileRequest('http://api.xtale.net/api/FileUpload', [], files).subscribe(() => {
+// Handle UploadService
+  fileChangeEvent(fileInput: any){
+        this.filesToUpload = <Array<File>> fileInput.target.files;
+    }
+     upload() {    
+        this._uploadService.makeFileRequest('http://api.xtale.net/api/FileUpload',[], this.filesToUpload)
+                            .then((results) => {
+                              console.log(results);
+                              this.imageName = "http://api.xtale.net/imgupload/"+results.ImageUrl;
+                              console.log(this.imageName);
+                            }, (error) => {
+                            console.error(error);
+                          })                        
         console.log('sent');
-        this.picName = files;
-     });
+        
      }
-// @ViewChild("fileInput") fileInput;
-//  addFile(): void {
-//     let fi = this.fileInput.nativeElement;
-//     if (fi.files && fi.files[0]) {
-//         let fileToUpload = fi.files[0];
-//         this.upload(fileToUpload)
-//             .subscribe(res => {
-//                 console.log(res);
-//             });
-//     }
-// }
-// upload(fileToUpload: any) {
-//     let input = new FormData();
-//     input.append("file", fileToUpload);
 
-//     return this._http
-//         .post("http://api.xtale.net/api/FileUpload", input);
-// }
-//Upload File
-// uploadFile: any;
-//   hasBaseDropZoneOver: boolean = false;
-//   options: NgUploaderOptions = {
-//     url: 'http://api.xtale.net/api/FileUpload',
-//     allowedExtensions: ['image/png', 'image/jpg'],
-//   };
-//   sizeLimit = 2000000;
-
-//   handleUpload(data): void {
-//     if (data && data.response) {
-//       data = JSON.parse(data.response);
-//       this.uploadFile = data;
-//     }
-//   }
-
-//   fileOverBase(e:any):void {
-//     this.hasBaseDropZoneOver = e;
-//   }
-
-//   beforeUpload(uploadingFile): void {
-//     if (uploadingFile.size > this.sizeLimit) {
-//       uploadingFile.setAbort();
-//       alert('File is too large');
-//     }
-//   }
 
 // Init form
   private initForm() { 
+    
       
       let ReviewTitle = '';
       let ReviewContent = ''; 
@@ -152,7 +117,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
       let UserId = this.UserInfo.user_id;
       let Score = 0;
       let RateCount = 0;   
-      let ImageUrl = ''; 
+      let ImageUrl = 'http://www.love-sites.com/wp-content/uploads/2016/04/xem-hinh-girl-xinh9x-11-500x300.jpg'; 
       let Slug = '';
 
       if(!this._isNew) {

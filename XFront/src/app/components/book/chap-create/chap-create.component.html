@@ -1,44 +1,43 @@
- <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" >
+ <form [formGroup]="chapForm" (ngSubmit)="onSubmit()" >
+
       <div class="row">
         <div class="col-lg-12">
           <button type="submit" class="btn btn-success">Save</button>
           <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
         </div>
-      </div>
-    <div class="row">
-        <div class="col-lg-12">
-          <div class="form-group">
-            <label for="StoryName">Tên Truyện</label>
-            <input
-              type="text"
-              id="StoryName"
-              class="form-control"
-              formControlName="StoryName" [(ngModel)]="storyName">
-          </div>
-        </div>
-      </div>
-            <!--THE CHAPTER -->
-<fieldset>
-  <legend>Thêm Chương</legend>      
-     <div formArrayName="Chapters">
-         <!--Chapter Number -->
-      <div *ngFor="let chapter of bookForm.controls.Chapters.controls; let i=index">
-          <div [formGroupName]="i">
-            <label for="ChapterNumber">Số chương</label>
-              <input
-                type="text"
-                id="ChapterNumber"
-                class="form-control"
-                formControlName="ChapterNumber"> 
-        <!-- Chapter Title-->     
-            <label for="ChapterTitle">Tên chương </label>
-            <input
-                type="text"
-                id="ChapterTitle"
-                class="form-control"
-                formControlName="ChapterTitle"> 
-          </div>
-  </div>
-    </div>
-</fieldset>
+      </div> 
+    <!--ADD CHAPTER -->
+         <!-- Chapter Title-->           
+        <label for="ChapterNumber">Số Chương</label>
+          <input
+            type="text"
+            id="ChapterNumber"
+            class="form-control"
+            formControlName="ChapterNumber">
+      
+
+     <!-- Chapter Title-->     
+     
+        <label for="ChapterTitle">Tên chương</label>
+          <input
+            type="text"
+            id="ChapterTitle"
+            class="form-control"
+            formControlName="ChapterTitle">
+         
+      
+      <!--CHAPTER CONTENT-->
+    
+      
+         
+            <label for="ChapterContent">Nội dung Chương </label>
+            <textarea          
+            rows="10" 
+            cols="80"
+            id="ChapterContent"
+            class="form-control"
+            formControlName="ChapterContent"></textarea>
+         
+       
+    
    </form>
