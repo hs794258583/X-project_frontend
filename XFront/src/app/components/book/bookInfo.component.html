@@ -15,19 +15,16 @@ Author: Linh Ho
     <!--<div class="download-ebook">
         <a href="#!">Download Ebook</a>
         <a href="#!">Download PDF</a>
-<<<<<<< HEAD
     </div>
     <button class="download-ebook" (click)="deleteBook(book); $event.stopPropagation()">Xoá truyện</button>
-=======
     </div>-->
->>>>>>> origin/master
     <div [innerHTML]="book.StoryDescription"></div>
 </div>
 <div class="list-chap">
     <div class="search-form search-chap">
         <input type="text" placeholder="Tìm kiếm..." [(ngModel)]="chapSearch" (keydown.enter)="search()" (ngModelChange)="checkClearSearch()">
-        <a (click)="search()" *ngIf="!searchStatus"><i class="material-icons">search</i></a>
-        <a (click)="clearSearch()" *ngIf="searchStatus"><i class="material-icons">clear</i></a>
+        <a [routerLink]="" (click)="search()" *ngIf="!searchStatus"><i class="material-icons">search</i></a>
+        <a [routerLink]="" (click)="clearSearch()" *ngIf="searchStatus"><i class="material-icons">clear</i></a>
     </div>
     <ul
         infinite-scroll

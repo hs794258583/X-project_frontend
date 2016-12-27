@@ -26,21 +26,16 @@ import { ReviewDetailComponent } from './components/review/reviewDetail.componen
 import { ReviewService } from './components/review/review.service';
 import { Ng2UploaderModule } from 'ng2-uploader';
 import { BookCreateComponent } from './components/book/book-create/book-create.component';
-
 import { StarComponent } from './components/star/star.component';
 import { BookService } from './components/book/book.service';
-<<<<<<< HEAD
 import { ChapCreateComponent } from './components/book/chap-create/chap-create.component';
 import { ChapEditComponent } from './components/book/chap-edit/chap-edit.component';
 import { ChapService } from './components/book/chap-create/chap.service';
 import { NgUploaderModule } from 'ngx-uploader';
 import { UploadService } from './components/review/review-edit/upload.service';
-=======
 import { StoryManageComponent } from './components/mod/storyManage/storyManage.component';
 import { StoryCensorshipComponent } from './components/mod/storyCensorship/storyCensorship.component';
 import { FacebookComment } from './components/facebookComment/facebookComment.component';
-
->>>>>>> origin/master
 
 @NgModule({
   declarations: [
@@ -57,16 +52,13 @@ import { FacebookComment } from './components/facebookComment/facebookComment.co
     ReviewComponent,
     ReviewDetailComponent,
     BookCreateComponent,
-<<<<<<< HEAD
     StarComponent,  
     ChapCreateComponent,
-    ChapEditComponent
-=======
+    ChapEditComponent,
     StarComponent,
     FacebookComment,
     StoryManageComponent,
     StoryCensorshipComponent
->>>>>>> origin/master
   ],
   imports: [
     BrowserModule,
@@ -76,12 +68,8 @@ import { FacebookComment } from './components/facebookComment/facebookComment.co
     ReactiveFormsModule,
     InfiniteScrollModule,
     CKEditorModule,
-<<<<<<< HEAD
     NgUploaderModule,
-=======
-    Ng2UploaderModule
->>>>>>> origin/master
-     
+    Ng2UploaderModule   
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
    ApiService, SlugService, ReviewService, BookService, ChapService, UploadService],

@@ -22,13 +22,8 @@ export class BookInfoComponent implements OnInit {
   listChap:any[] = [];
   slug:string;
   sub: any;
-<<<<<<< HEAD
   books: Story[] = [];
-  sum:number = 10;
-=======
-
   sum:number = 20;
->>>>>>> origin/master
   start:number = 1;
   throttle:number = 300;
   scrollDistance:number = 1;
@@ -106,16 +101,6 @@ export class BookInfoComponent implements OnInit {
     if(this.chapSearch ==""){
       this.clearSearch();
     }
-<<<<<<< HEAD
-
-    //Delete Book
-    deleteBook(book: Story) {
-     this._bookService.removeBook(book.StoryId)
-                       .subscribe(data => this.books = data);
-                       this._bookService.navigateBack();
-    }
-
-=======
   }
   clearSearch(){
     this.searchNull = false;
@@ -125,5 +110,11 @@ export class BookInfoComponent implements OnInit {
     this.searchStatus = false;
     this.getListChap(this.start,this.slug);
   }
->>>>>>> origin/master
+    //Delete Book
+  deleteBook(book:Story) {
+    this._bookService.removeBook(book.StoryId)
+                      .subscribe(data => this.books = data);
+                      this._bookService.navigateBack();
+  }
+
 }

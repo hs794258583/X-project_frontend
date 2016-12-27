@@ -48,7 +48,7 @@ export class ReviewDetailComponent implements OnInit {
       }
     });
   }
-
+  
   getStoryList(slug:string){
       this._api.getApi("http://api.xtale.net/api/Reviews/name/"+slug)
                 .subscribe(data => this.reviews = this.reviews.concat(data),
