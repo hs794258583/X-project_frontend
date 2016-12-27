@@ -22,6 +22,10 @@ export class BookInfoComponent implements OnInit {
   listChap:any[] = [];
   slug:string;
   sub: any;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   books: Story[] = [];
   sum:number = 20;
   start:number = 1;
@@ -110,6 +114,7 @@ export class BookInfoComponent implements OnInit {
     this.searchStatus = false;
     this.getListChap(this.start,this.slug);
   }
+<<<<<<< Updated upstream
     //Delete Book
   deleteBook(book:Story) {
     this._bookService.removeBook(book.StoryId)
@@ -117,4 +122,12 @@ export class BookInfoComponent implements OnInit {
                       this._bookService.navigateBack();
   }
 
+=======
+   //Delete Book
+ deleteBook(book: Story) {
+     this._bookService.removeBook(book.StoryId)
+                       .subscribe(data => this.books = data);
+                       this._bookService.navigateBack();
+    }
+>>>>>>> Stashed changes
 }

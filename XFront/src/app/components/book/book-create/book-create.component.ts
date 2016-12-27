@@ -11,6 +11,7 @@ import { Chapters } from '../../../model/chapters.model';
 import { Author } from '../../../model/author.model';
 import { ApiService } from '../../../services/api.service';
 import { Genre } from '../../../model/genre.model';
+import { UploadService } from '../../review/review-edit/upload.service';
 
 @Component({
   selector: 'app-book-create',
@@ -20,6 +21,8 @@ import { Genre } from '../../../model/genre.model';
 })
 export class BookCreateComponent implements OnInit, OnDestroy {
 
+   filesToUpload: Array<File>;
+  imageName:string;
 
    authors: Author[] = [];
    genres: Genre[] = [];
@@ -37,7 +40,8 @@ export class BookCreateComponent implements OnInit, OnDestroy {
               private _formBuilder: FormBuilder,
               private _router: Router,
               private _route: ActivatedRoute,
-              private _api: ApiService) { }
+              private _api: ApiService,
+              private _uploadService: UploadService) { }
 
   ngOnInit() {
     // this._subscription = this._route.params.subscribe(
@@ -80,7 +84,26 @@ export class BookCreateComponent implements OnInit, OnDestroy {
       console.log(newBook);
   }
 
- 
+ // Handle UploadService
+  fileChangeEvent(fileInput: any){
+        this.filesToUpload = <Array<File>> fileInput.target.files;
+    }
+     upload() {    
+        this._uploadService.makeFileRequest('http://api.xtale.net/api/FileUpload',[], this.filesToUpload)
+                            .then((results) => {
+                              console.log(results);
+                              this.imageName = "http://api.xtale.net/imageupload/"+results.ImageUrl;
+                              console.log(this.imageName);
+                            }, (error) => {
+                            console.error(error);
+                          })                        
+        console.log('sent');
+        
+     }
+
+
+
+
 
 getAuthor() {
   return this._api.getApi("http://api.xtale.net/api/authors/")
@@ -125,7 +148,7 @@ initChapters() {
    let UserId = this.userInfo.user_id;
    let Score = 0;
    let RateCount = 0;
-   let Image = 'https://techpur.com/wp-content/plugins/facebook-share-like-popup-viralplus/default.jpg';
+  let ImageUrl = 'http://www.love-sites.com/wp-content/uploads/2016/04/xem-hinh-girl-xinh9x-11-500x300.jpg'; 
    let Slug = '';
 
 
@@ -139,8 +162,8 @@ initChapters() {
       UserId = UserId;
       Score = this._book.Score;
       RateCount = this._book.RateCount;
-      Image = this._book.Image;
-      Slug = this._book.Slug;
+      ImageUrl = this._book.Image;
+      Slug = this._slug.getSlug(StoryName);
    }
 
    //Book FormBuiler
@@ -154,7 +177,7 @@ initChapters() {
       UserId : [UserId],
       Score : [Score],
       RateCount : [RateCount],
-      Image : [Image],
+      Image : [ImageUrl],
       Slug : [StoryName],
       
       Author: [''],
