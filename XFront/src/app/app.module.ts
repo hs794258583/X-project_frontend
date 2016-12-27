@@ -37,10 +37,6 @@ import { StoryManageComponent } from './components/mod/storyManage/storyManage.c
 import { StoryCensorshipComponent } from './components/mod/storyCensorship/storyCensorship.component';
 import { FacebookComment } from './components/facebookComment/facebookComment.component';
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,12 +69,8 @@ import { FacebookComment } from './components/facebookComment/facebookComment.co
     InfiniteScrollModule,
     CKEditorModule,
     NgUploaderModule,
-<<<<<<< Updated upstream
     Ng2UploaderModule   
-=======
-    Ng2UploaderModule
-     
->>>>>>> Stashed changes
+
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
    ApiService, SlugService, ReviewService, BookService, ChapService, UploadService],

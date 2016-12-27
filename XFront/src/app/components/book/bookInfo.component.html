@@ -33,4 +33,5 @@ Author: Linh Ho
         (scrolled)="onScrollDown()">
         <li *ngFor="let chap of listChap">Chap {{chap.ChapterNumber}} - <a routerLink="{{chap.ChapterNumber}}">{{chap.ChapterTitle}}</a></li>
     </ul>
+    <img *ngIf="searchNull" src="assets/images/nulldata.png" style="display: block ;max-width: 100%; margin:auto;" alt="Không tìm thấy data">
 </div>
