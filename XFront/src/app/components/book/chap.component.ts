@@ -157,7 +157,7 @@ export class ChapComponent implements OnInit {
     }
     else {
       tabautoUi.removeAttribute("class");
-      if(localStorage.getItem("darkUi")=="false"){
+      if(localStorage.getItem("darkUi")=="false" || !localStorage.getItem("darkUi")){
         body[0].removeAttribute("class");
         html[0].removeAttribute("class");
       }
