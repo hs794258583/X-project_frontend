@@ -55,12 +55,12 @@ const appRoutes: Routes = [
     },
     // **Chapter Routing Section
     {
-        path:'sach/:id/them-chap',
+        path:'sach/:slug/them-chap',
         component: ChapCreateComponent,
         canActivate: [AuthGuard]
     },
     {
-        path:'sach/:id/:chapnumber/sua-chap',
+        path:'sach/:slug/:chapnumber/sua-chap',
         component: ChapEditComponent,
         canActivate: [AuthGuard]
     },

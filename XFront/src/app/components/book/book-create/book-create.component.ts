@@ -101,10 +101,6 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         
      }
 
-
-
-
-
 getAuthor() {
   return this._api.getApi("http://api.xtale.net/api/authors/")
                     .subscribe(data => this.authors = data,

@@ -70,7 +70,10 @@ import { FacebookComment } from './components/facebookComment/facebookComment.co
     CKEditorModule,
     NgUploaderModule,
     Ng2UploaderModule   
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
    ApiService, SlugService, ReviewService, BookService, ChapService, UploadService],

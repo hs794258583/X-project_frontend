@@ -9,22 +9,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SlugService } from '../../../services/slug.service';
 import { ApiService } from '../../../services/api.service';
 import { Chapters } from '../../../model/chapters.model';
-
+import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'app-chap-create',
   templateUrl: './chap-create.component.html',
   styleUrls: ['./chap-create.component.css']
 })
-export class ChapCreateComponent implements OnInit, OnDestroy {
-  @Input() stories: Story;
-  
-  
+export class ChapCreateComponent implements OnInit {
   chapForm: FormGroup;
+  slug:string;
+  sub: any;
+  storyId: number;
+  bookInfo: any[];
+  chapNumber: number;
+
   private _subscription: Subscription;
   private _isNew = true;
   private _chap: Chapters;
   private _chapIndex: number;
-
+  
   userInfo: any = JSON.parse(localStorage.getItem('profile'));
   constructor(private _chapService: ChapService,          
               private _slug: SlugService,
@@ -33,24 +36,42 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
               private _route: ActivatedRoute) { }
 
   ngOnInit() {
-        this._subscription = this._route.params.subscribe(
-      (params: any) => {
-        if(params.hasOwnProperty('StoryId')){
-          this._isNew = false;
-          this._chapIndex =  +params['StoryId'];
-          this._chap = this._chapService.getChapter(this._chapIndex);
-        } else {
-          this._isNew = true;
-          this._chap = null;
-        }
+    //     this._subscription = this._route.params.subscribe(
+    //   (params: any) => {
+    //     if(params.hasOwnProperty('StoryId')){
+    //       this._isNew = false;
+    //       this._chapIndex =  +params['StoryId'];
+    //       this._chap = this._chapService.getChapter(this._chapIndex);
+    //     } else {
+    //       this._isNew = true;
+    //       this._chap = null;
+    //     }
         
-      }
-    )
+    //   }
+    // )
+      //sub params
+    this.sub = this._route.params.subscribe(params => {
+      this.slug = params['slug'];
+      this.getBookInfo(this.slug);
+      // this.getListChap(this.start, this.slug);
+    });
     this.initForm();
   }
-  
+  //GetStoryId
+   getBookInfo(bookSlug:string){
+    // Author: Linh Ho
+    this._api.getApi("http://api.xtale.net/api/Stories/name/"+bookSlug)
+              .subscribe(data =>{
+              this.bookInfo = data
+              this.storyId = data[0].StoryId;
+             this.chapNumber = data[0].Chapters.length + 1;  
+             
+          },
+       error => this.bookInfo = <any>error);
+  }
+
   onSubmit() {
-      const newChap = this.chapForm.value();
+      const newChap = this.chapForm.value;
       if(this._isNew){
         this._chapService.addChap(newChap);
       } else {
@@ -58,18 +79,15 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
       }
       this._chapService.navigateBack()
       console.log(newChap);
-  }
-
-  ngOnDestroy(){
-    this._subscription.unsubscribe();
+      console.log(this.storyId);
   }
 
   private initForm() {
-    let StoryId = 24;
-    let ChapterNumber;
+    let StoryId = this.storyId;
+    let ChapterNumber = this.chapNumber;
     let ChapterTitle = '';
     let ChapterContent = '';
-    let ChapterStatus;
+    let ChapterStatus = 1;
     let UploadedDate = new Date().toUTCString();
     let LastEditedDate = new Date().toUTCString();
     let UserId = this.userInfo.user_id;
@@ -98,9 +116,7 @@ export class ChapCreateComponent implements OnInit, OnDestroy {
           UserId : [UserId],
           Slug : [Slug]
       }); 
-    
   }
-
 
   onCancel() {
     this._chapService.navigateBack();

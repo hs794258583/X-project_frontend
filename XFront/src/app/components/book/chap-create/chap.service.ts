@@ -32,8 +32,8 @@ getChapters(){
   }
   
 //Create Chap
-addChap(chapter: Chapters){
-  const body = JSON.stringify(chapter);
+addChap(chap: Chapters){
+  const body = JSON.stringify(chap);
   const headers = new Headers({
     'Content-Type' : 'application/json'
   });
@@ -42,7 +42,7 @@ addChap(chapter: Chapters){
                     .map((res: Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
                     .subscribe(
-                      book => this._chaps.push(book),
+                      chap => this._chaps.push(chap),
                       error => this._errorMessage = <any>error
                     )
 
