@@ -89,6 +89,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
 
 // Handle UploadService
   fileChangeEvent(fileInput: any){
+
         this.filesToUpload = <Array<File>> fileInput.target.files;
     }
      upload() {    

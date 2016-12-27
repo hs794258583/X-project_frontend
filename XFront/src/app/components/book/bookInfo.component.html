@@ -17,6 +17,7 @@ Author: Linh Ho
         <a href="#!">Download PDF</a>
     </div>
     <button class="download-ebook" (click)="deleteBook(book); $event.stopPropagation()">Xoá truyện</button>
+     
 
     <div [innerHTML]="book.StoryDescription"></div>
     <app-facebookComment [router]="sach" [param]="book?.Slug"></app-facebookComment>

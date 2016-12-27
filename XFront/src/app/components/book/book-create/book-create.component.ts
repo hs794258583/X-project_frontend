@@ -21,9 +21,13 @@ import { UploadService } from '../../review/review-edit/upload.service';
 })
 export class BookCreateComponent implements OnInit, OnDestroy {
 
+     bookInfo: any[];
+     slug: string;
+     storyId: number;
+     sub: any;
+      
    filesToUpload: Array<File>;
   imageName:string;
-
    authors: Author[] = [];
    genres: Genre[] = [];
    bookForm: FormGroup;
@@ -41,7 +45,9 @@ export class BookCreateComponent implements OnInit, OnDestroy {
               private _router: Router,
               private _route: ActivatedRoute,
               private _api: ApiService,
-              private _uploadService: UploadService) { }
+              private _uploadService: UploadService) { 
+                this.slug = _route.snapshot.params['Slug']
+              }
 
   ngOnInit() {
     // this._subscription = this._route.params.subscribe(
@@ -57,6 +63,11 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         
     //   }
     // )
+     this.sub = this._route.params.subscribe(params => {
+      this.slug = params['slug'];
+      this.getBookInfo(this.slug);
+      // this.getListChap(this.start, this.slug);
+    });
     this.initForm();
 
 //Init Author and Genre for Dropdown
@@ -71,6 +82,15 @@ export class BookCreateComponent implements OnInit, OnDestroy {
       this.getGenre();
       console.log(this.genreId);
     })
+  }
+ getBookInfo(bookSlug:string){
+    // Author: Linh Ho
+    this._api.getApi("http://api.xtale.net/api/Stories/name/"+bookSlug)
+              .subscribe(data =>{
+              this.bookInfo = data; 
+             console.log(data);         
+          },
+       error => this.bookInfo = <any>error);
   }
 
 // Submit form
@@ -100,6 +120,8 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         console.log('sent');
         
      }
+
+// GetAuthor
 
 getAuthor() {
   return this._api.getApi("http://api.xtale.net/api/authors/")

@@ -64,8 +64,8 @@ export class ChapCreateComponent implements OnInit {
               .subscribe(data =>{
               this.bookInfo = data
               this.storyId = data[0].StoryId;
-             this.chapNumber = data[0].Chapters.length + 1;  
-             
+             this.chapNumber = data[0].Chapters.length + 1;   
+             console.log(data);         
           },
        error => this.bookInfo = <any>error);
   }

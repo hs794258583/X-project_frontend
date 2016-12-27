@@ -2,13 +2,13 @@
 
 import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
-// import { options } from '../auth.options';
+import { options } from '../auth.options';
 
 declare var Auth0Lock: any;
 @Injectable()
 export class AuthService {
   // configure Auth0
-  lock = new Auth0Lock('TcLiafZN9iriIMcyvr7zlYNKFYcvtYuG', 'xmanga.auth0.com', {});
+  lock = new Auth0Lock('TcLiafZN9iriIMcyvr7zlYNKFYcvtYuG', 'xmanga.auth0.com', {options});
   constructor() {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult:any) => {

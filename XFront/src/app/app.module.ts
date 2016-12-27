@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {APP_BASE_HREF} from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -36,8 +34,11 @@ import { UploadService } from './components/review/review-edit/upload.service';
 import { StoryManageComponent } from './components/mod/storyManage/storyManage.component';
 import { StoryCensorshipComponent } from './components/mod/storyCensorship/storyCensorship.component';
 import { FacebookComment } from './components/facebookComment/facebookComment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     HomeComponent,
@@ -71,7 +72,8 @@ import { FacebookComment } from './components/facebookComment/facebookComment.co
     NgUploaderModule,
     Ng2UploaderModule   
   ],
-  providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+    appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
    ApiService, SlugService, ReviewService, BookService, ChapService, UploadService],
   bootstrap: [AppComponent]
 })
