@@ -1,3 +1,3 @@
-// export const options = {
-// allowedConnections: ['facebook', 'google']
-// }
+export const options = {
+allowedConnections: ['facebook', 'google']
+}

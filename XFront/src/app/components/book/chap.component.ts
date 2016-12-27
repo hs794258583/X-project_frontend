@@ -34,6 +34,7 @@ export class ChapComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _location:Location
+   
   ) { }
 
   ngOnInit() {
@@ -83,7 +84,8 @@ export class ChapComponent implements OnInit {
   }
   //set UI lage Font
   setlargeFontUi(){
-    let chapContent = document.getElementsByClassName("results");
+    let chapContent =document.getElementsByClassName("results");
+   
     let tabLarge = document.getElementById("tab-large");
     if(localStorage.getItem("largeFont") == "true"){
       chapContent[0].style.font = " 2rem Roboto Slab,serif";
