@@ -16,8 +16,12 @@ Author: Linh Ho
         <a href="#!">Download Ebook</a>
         <a href="#!">Download PDF</a>
     </div>-->
-    <button class="download-ebook" (click)="deleteBook(book); $event.stopPropagation()" *ngIf="checkUser()">Xoá truyện</button>
+    <div class="download-ebook">
+        <button  (click)="deleteBook(book); $event.stopPropagation()" *ngIf="checkUser()">Xoá truyện</button>
+        <button routerLink="/sach/{{book.Slug}}/them-chap" >Thêm Chap</button>
 
+    </div>
+    
     <div [innerHTML]="book.StoryDescription"></div>
     <app-facebookComment [router]="sach" [param]="book?.Slug"></app-facebookComment>
 </div>
