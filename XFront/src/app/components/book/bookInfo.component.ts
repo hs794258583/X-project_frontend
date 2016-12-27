@@ -55,7 +55,7 @@ export class BookInfoComponent implements OnInit {
               .subscribe(data => this.bookInfo = data,
                           error => this.bookInfo = <any>error);
   }
-  
+
   getListChap(start:number,bookSlug:string){
     // Author: Linh Ho
     let end:number = start + this.sum - 1;
@@ -71,7 +71,7 @@ export class BookInfoComponent implements OnInit {
               },
                           error => this.listChap = <any>error);
   }
-
+//scroll
   onScrollDown () {
     if(this.dataStatus == true){
       this.start = this.start + this.sum;

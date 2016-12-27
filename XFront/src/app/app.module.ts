@@ -29,6 +29,8 @@ import { BookCreateComponent } from './components/book/book-create/book-create.c
 
 import { StarComponent } from './components/star/star.component';
 import { BookService } from './components/book/book.service';
+import { StoryManageComponent } from './components/mod/storyManage/storyManage.component';
+import { StoryCensorshipComponent } from './components/mod/storyCensorship/storyCensorship.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { BookService } from './components/book/book.service';
     ReviewComponent,
     ReviewDetailComponent,
     BookCreateComponent,
-    StarComponent
+    StarComponent,
+    StoryManageComponent,
+    StoryCensorshipComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ import { BookService } from './components/book/book.service';
     ReactiveFormsModule,
     InfiniteScrollModule,
     CKEditorModule,
-     Ng2UploaderModule
+    Ng2UploaderModule
      
   ],
   providers: [appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard, ApiService, SlugService, ReviewService, BookService],
