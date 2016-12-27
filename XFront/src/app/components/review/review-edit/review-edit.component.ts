@@ -95,7 +95,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy{
         this._uploadService.makeFileRequest('http://api.xtale.net/api/FileUpload',[], this.filesToUpload)
                             .then((results) => {
                               console.log(results);
-                              this.imageName = "http://api.xtale.net/imgupload/"+results.ImageUrl;
+                              this.imageName = "http://api.xtale.net/imageupload/"+results.ImageUrl;
                               console.log(this.imageName);
                             }, (error) => {
                             console.error(error);
