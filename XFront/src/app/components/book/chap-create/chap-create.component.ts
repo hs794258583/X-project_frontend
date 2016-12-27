@@ -22,6 +22,7 @@ export class ChapCreateComponent implements OnInit {
   storyId: number;
   bookInfo: any[];
   chapNumber: number;
+  StoryName:string;
 
   private _subscription: Subscription;
   private _isNew = true;
@@ -64,8 +65,14 @@ export class ChapCreateComponent implements OnInit {
               .subscribe(data =>{
               this.bookInfo = data
               this.storyId = data[0].StoryId;
+<<<<<<< HEAD
              this.chapNumber = data[0].Chapters.length + 1;   
              console.log(data);         
+=======
+              this.StoryName = data[0].StoryName;
+             this.chapNumber = data[0].Chapters.length + 1;  
+             
+>>>>>>> origin/master
           },
        error => this.bookInfo = <any>error);
   }

@@ -75,6 +75,7 @@ export class BookInfoComponent implements OnInit {
               },
                           error => this.listChap = <any>error);
   }
+
 //scroll
   onScrollDown () {
     if(this.dataStatus == true){
@@ -82,6 +83,7 @@ export class BookInfoComponent implements OnInit {
       this.getListChap(this.start,this.slug);
     }
   }
+
     //search chap
   search(){
     if(this.chapSearch !=""){
@@ -96,11 +98,13 @@ export class BookInfoComponent implements OnInit {
                            error => this.searchNull = true);
     }
   }
+
   checkClearSearch(){
     if(this.chapSearch ==""){
       this.clearSearch();
     }
   }
+
   clearSearch(){
     this.searchNull = false;
     this.chapSearch = "";
@@ -117,4 +121,19 @@ export class BookInfoComponent implements OnInit {
                        this._bookService.navigateBack();
     }
 
+  //check user
+  checkUser(){
+    let user = JSON.parse(localStorage.getItem('profile'));
+    if(user !=""){
+      if(user.user_id == this.bookInfo[0].UserId || user.roles[0]== 'mod' || user.roles[0]== 'admin'){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else {
+      return false;
+    }
+  }
 }

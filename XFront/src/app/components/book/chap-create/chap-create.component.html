@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  <form [formGroup]="chapForm" (ngSubmit)="onSubmit()" >
 <h2>Thêm chương thứ {{chapNumber}}</h2>
       <div class="row">
@@ -6,15 +7,21 @@
           <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
         </div>
       </div> 
+=======
+ <form class="form-input" [formGroup]="chapForm" (ngSubmit)="onSubmit()" >
+   <h1>Sách: {{StoryName}}</h1>
+   <h2>Thêm mới chap {{chapNumber}}</h2>
+>>>>>>> origin/master
     <!--ADD CHAPTER -->          
      <!-- Chapter Title-->     
-        <label for="ChapterTitle">Tên chương</label>
-          <input
-            type="text"
-            id="ChapterTitle"
-            class="form-control"
-            formControlName="ChapterTitle">
-
+      <div class="form-group">
+        <input
+          type="text"
+          id="ChapterTitle"
+          class="form-control"
+          formControlName="ChapterTitle"
+          placeholder="Tên chap">
+      </div>
        <input
             type="hidden"
             id="StoryId"
@@ -29,6 +36,7 @@
           
       <!--CHAPTER CONTENT-->   
          
+<<<<<<< HEAD
       <label for="ChapterContent">Nội dung Chương </label>
 
       <div class="form-group">
@@ -39,4 +47,19 @@
             </ckeditor>
   </div>       
 
+=======
+          <div class="form-group">
+            <!--<textarea          
+            rows="10" 
+            cols="80"
+            id="ChapterContent"
+            class="form-control"
+            formControlName="ChapterContent"></textarea>  -->
+            <ckeditor name="ChapterContent" id="ChapterContent" formControlName="ChapterContent"></ckeditor> 
+          </div>
+        <div class="action">
+          <button type="submit" class="btn btn-success">Save</button>
+          <a class="btn btn-danger" (click)="onCancel()">Cancel</a>
+        </div>
+>>>>>>> origin/master
    </form>

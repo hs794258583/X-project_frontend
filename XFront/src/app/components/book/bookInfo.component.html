@@ -12,13 +12,22 @@ Author: Linh Ho
             <span class="bookStatus" *ngIf="book.StoryProgress == 0">Truyện chưa hoàn thành</span>
         </div>
     </div>
-    <div class="download-ebook">
+    <!--<div class="download-ebook">
         <a href="#!">Download Ebook</a>
         <a href="#!">Download PDF</a>
+<<<<<<< HEAD
     </div>
     <button class="download-ebook" (click)="deleteBook(book); $event.stopPropagation()">Xoá truyện</button>
      
+=======
+    </div>-->
+    <div class="download-ebook">
+        <button  (click)="deleteBook(book); $event.stopPropagation()" *ngIf="checkUser()">Xoá truyện</button>
+        <button routerLink="/sach/{{book.Slug}}/them-chap" >Thêm Chap</button>
+>>>>>>> origin/master
 
+    </div>
+    
     <div [innerHTML]="book.StoryDescription"></div>
     <app-facebookComment [router]="sach" [param]="book?.Slug"></app-facebookComment>
 </div>
