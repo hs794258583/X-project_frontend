@@ -27,4 +27,5 @@ Author: Linh Ho
                 <h2><a routerLink="/tac-gia/{{story.Author.Slug}}">{{story.Author.AuthorName}} </a>| <app-star [score]="story.Score" [rateCount]="story.RateCount"></app-star></h2>
             </div>      
         </template>
+        <img *ngIf="searchNull" src="assets/images/nulldata.png" style="display: block ;max-width: 100%; margin:auto;" alt="Không tìm thấy data">
 </div>
