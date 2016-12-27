@@ -27,6 +27,7 @@ export class ChapComponent implements OnInit {
   throttle = 300;
   scrollDistance = 1;
   dataStatus = true;
+  showComment = false;
   constructor(
     private _auth: AuthService,
     private _api: ApiService,
@@ -210,4 +211,17 @@ export class ChapComponent implements OnInit {
       this.setAutoUi();
     }
   }
+  //show comment
+  showFcomment(){
+    this.showComment = !this.showComment;
+    if(this.showComment) {
+        document.getElementById("Fcomment").style.width = "550px";
+        document.getElementById("FbgClose").style.height = "100vh";
+      }
+      else {
+        document.getElementById("Fcomment").style.width = "0px";
+        document.getElementById("FbgClose").style.height = "0px";
+      }
+  }
+
 }

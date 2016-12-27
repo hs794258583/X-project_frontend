@@ -41,3 +41,17 @@ Author: Linh Ho
         </div>  
     </div>
 </div>
+
+<div>
+    <div id="Fcomment">
+        <a class="clearCommentBox" [routerLink]="" (click)="showFcomment()"><i class="large material-icons">clear</i></a>
+        <app-facebookComment [router]="thao-luan" [param]="review?.Slug"></app-facebookComment>
+    </div>
+    <div id="FbgClose" (click)="showFcomment()">
+
+    </div>
+</div>
+
+<div class="create-item">
+  <a class="create-book" [routerLink]="" (click)="showFcomment()"><i class="large material-icons">comment</i></a>
+</div>
