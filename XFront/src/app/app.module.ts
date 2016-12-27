@@ -31,6 +31,7 @@ import { StarComponent } from './components/star/star.component';
 import { BookService } from './components/book/book.service';
 import { StoryManageComponent } from './components/mod/storyManage/storyManage.component';
 import { StoryCensorshipComponent } from './components/mod/storyCensorship/storyCensorship.component';
+import { FacebookComment } from './components/facebookComment/facebookComment.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { StoryCensorshipComponent } from './components/mod/storyCensorship/story
     ReviewDetailComponent,
     BookCreateComponent,
     StarComponent,
+    FacebookComment,
     StoryManageComponent,
     StoryCensorshipComponent
   ],

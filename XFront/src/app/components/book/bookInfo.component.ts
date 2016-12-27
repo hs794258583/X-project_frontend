@@ -19,7 +19,7 @@ export class BookInfoComponent implements OnInit {
   slug:string;
   sub: any;
 
-  sum:number = 10;
+  sum:number = 20;
   start:number = 1;
   throttle:number = 300;
   scrollDistance:number = 1;

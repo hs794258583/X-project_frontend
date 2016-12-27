@@ -18,6 +18,7 @@ AuthService
 })
 export class GenreComponent implements OnInit {
   stories:Story[] = [];
+  genreName:string;
   sum = 12;
   start = 1;
   throttle = 300;
@@ -36,8 +37,14 @@ export class GenreComponent implements OnInit {
      this.sub = this._route.params.subscribe(params => {
       this.stories = [];
       this.getStoryList(this.start, params['slug']);
+      this.getGenre(params['slug']);
       this.param = params['slug'];
     });
+  }
+  
+  getGenre(slug:string){
+    this._api.getApi("http://api.xtale.net/api/Genres/name/"+slug)
+                .subscribe(data => this.genreName = data[0].GenreName);
   }
 
   getStoryList(start:number, param:string){
