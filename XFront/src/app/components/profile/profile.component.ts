@@ -15,8 +15,7 @@ export class ProfileComponent implements OnInit {
   reviews:Review[];
   constructor(
     private _auth: AuthService,
-    private _api: ApiService
-    ) {
+    private _api: ApiService) {
     this.profile = JSON.parse(localStorage.getItem('profile'));
     console.log(this.profile);
    }

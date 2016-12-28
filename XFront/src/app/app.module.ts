@@ -70,11 +70,12 @@ import { NgModule } from '@angular/core';
     InfiniteScrollModule,
     CKEditorModule,
     NgUploaderModule,
-    Ng2UploaderModule   
+    Ng2UploaderModule  
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+  providers: [
     appRoutingProviders, AuthService, AUTH_PROVIDERS, AuthGuard,
-   ApiService, SlugService, ReviewService, BookService, ChapService, UploadService],
+   ApiService, SlugService, ReviewService, BookService, ChapService, UploadService,
+   {provide: LocationStrategy, useClass: HashLocationStrategy},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

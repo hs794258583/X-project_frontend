@@ -23,7 +23,7 @@ import { StoryCensorshipComponent } from './components/mod/storyCensorship/story
 const appRoutes: Routes = [
     {
         path: '',
-        component: HomeComponent 
+        component: HomeComponent
     },
     //** Review Routing Section
     {
@@ -97,8 +97,6 @@ const appRoutes: Routes = [
         path: 'tac-gia/:slug',
         component: AuthorComponent 
     },
-
-    
     {
         path: 'profile',
         component: ProfileComponent,
@@ -110,6 +108,7 @@ const appRoutes: Routes = [
         pathMatch: 'full' 
     }
 ];
-export const appRoutingProviders: any[] = [];
+export const appRoutingProviders: any[] = [
+];
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes, {useHash: true});
