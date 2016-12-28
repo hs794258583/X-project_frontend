@@ -69,8 +69,8 @@ export class ReviewDetailComponent implements OnInit {
   } 
   //check user
   checkUser(){
-    let user = JSON.parse(localStorage.getItem('profile'));
-    if(user !=""){
+    if(localStorage.getItem('profile')){
+      let user = JSON.parse(localStorage.getItem('profile'));
       if(user.user_id == this.reviews[0].UserId || user.roles[0]== 'mod' || user.roles[0]== 'admin'){
         return true;
       }

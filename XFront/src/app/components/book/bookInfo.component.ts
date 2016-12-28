@@ -123,9 +123,9 @@ export class BookInfoComponent implements OnInit {
 
   //check user
   checkUser(){
-    let user = JSON.parse(localStorage.getItem('profile'));
-    if(user !=""){
-      if(user.user_id == this.bookInfo[0].UserId || user.roles[0]== 'mod' || user.roles[0]== 'admin'){
+    if(localStorage.getItem('profile')){
+      let user = JSON.parse(localStorage.getItem('profile'));
+      if(user.user_id == this.bookInfo[0].UserId || user.roles[0] == 'mod' || user.roles[0] == 'admin'){
         return true;
       }
       else{
