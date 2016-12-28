@@ -14,18 +14,10 @@ Author: Linh Ho
     </div>
     <!--<div class="download-ebook">
         <a href="#!">Download Ebook</a>
-<<<<<<< HEAD
-
-    </div>
-    <button class="download-ebook" (click)="deleteBook(book); $event.stopPropagation()">Xoá truyện</button>
-     
-
-=======
         <a href="#!">Download PDF</a>
->>>>>>> origin/master
     </div>-->
-    <div class="download-ebook">
-        <button  (click)="deleteBook(book); $event.stopPropagation()" *ngIf="checkUser()">Xoá truyện</button>
+    <div class="download-ebook"  *ngIf="checkUser()">
+        <button  (click)="deleteBook(book); $event.stopPropagation()">Xoá truyện</button>
         <button routerLink="/sach/{{book.Slug}}/them-chap" >Thêm Chap</button>
 
     </div>
